@@ -51,6 +51,13 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: 5,
+    question: "Qual é o seu nome?",
+    type: 'input',
+    fieldName: 'name',
+    placeholder: "Digite seu nome"
+  },
+  {
+    id: 6,
     question: "Como o excesso de peso afeta sua vida?",
     type: 'select',
     fieldName: 'lifeImpact',
@@ -62,7 +69,7 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     question: "O que já tentou para emagrecer?",
     type: 'select',
     fieldName: 'obstacle',
@@ -74,28 +81,28 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     question: "Qual é o seu peso atual? (kg)",
     type: 'number',
     fieldName: 'currentWeight',
     placeholder: "Ex: 75"
   },
   {
-    id: 8,
+    id: 9,
     question: "Qual é a sua altura? (cm)",
     type: 'number',
     fieldName: 'height',
     placeholder: "Ex: 165"
   },
   {
-    id: 9,
+    id: 10,
     question: "Qual peso você deseja alcançar? (kg)",
     type: 'number',
     fieldName: 'desiredWeight',
     placeholder: "Ex: 60"
   },
   {
-    id: 10,
+    id: 11,
     question: "Qual é o seu nível de atividade física?",
     type: 'select',
     fieldName: 'activityLevel',
@@ -105,12 +112,5 @@ export const quizSteps: QuizStep[] = [
       { label: "Moderadamente ativo(a)", value: "moderate", icon: "🏃" },
       { label: "Muito ativo(a)", value: "very-active", icon: "🏅" },
     ]
-  },
-  {
-    id: 11,
-    question: "Qual é o seu nome?",
-    type: 'input',
-    fieldName: 'name',
-    placeholder: "Digite seu nome"
   },
 ];
