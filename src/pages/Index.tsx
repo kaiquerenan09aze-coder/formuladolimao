@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { AppState, UserData } from '@/types/quiz';
 import Quiz from '@/components/quiz/Quiz';
 import Calculating from '@/components/calculating/Calculating';
+import AnalysisComplete from '@/components/analysis/AnalysisComplete';
 import Result from '@/components/results/Result';
 import LandingPage from '@/components/sales/LandingPage';
 
@@ -15,6 +16,10 @@ const Index = () => {
   }, []);
 
   const handleCalculatingComplete = useCallback(() => {
+    setAppState('analysis');
+  }, []);
+
+  const handleAnalysisComplete = useCallback(() => {
     setAppState('result');
   }, []);
 
@@ -34,6 +39,10 @@ const Index = () => {
         onComplete={handleCalculatingComplete}
       />
     );
+  }
+
+  if (appState === 'analysis') {
+    return <AnalysisComplete onContinue={handleAnalysisComplete} />;
   }
 
   if (appState === 'result') {
