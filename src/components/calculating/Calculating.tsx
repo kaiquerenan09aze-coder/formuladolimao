@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UserData } from '@/types/quiz';
+import socialProofImage from '@/assets/social-proof.jpeg';
 
 interface CalculatingProps {
   userData: UserData;
@@ -38,20 +39,12 @@ const Calculating = ({ userData, onComplete }: CalculatingProps) => {
 
       <div className="bg-card rounded-3xl p-6 shadow-2xl max-w-md animate-pulse">
         <p className="text-forest font-bold mb-4">Enquanto analisamos, veja este resultado:</p>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden flex items-center justify-center">
-              <span className="text-6xl">🔴</span>
-            </div>
-            <p className="font-bold text-destructive">Antes</p>
-          </div>
-          <div className="space-y-2">
-            <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden flex items-center justify-center">
-              <span className="text-6xl">🟢</span>
-            </div>
-            <p className="font-bold text-primary">Depois</p>
-          </div>
-        </div>
+        <img 
+          src={socialProofImage} 
+          alt="Resultado de transformação" 
+          className="w-full rounded-xl object-cover"
+        />
+        <p className="text-muted-foreground text-sm mt-3 italic">"Resultado real de uma de nossas alunas"</p>
       </div>
     </div>
   );

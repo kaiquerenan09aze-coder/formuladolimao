@@ -3,6 +3,8 @@ import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
 import { Check, Star, Play, Lock, Clock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import testimonial1 from '@/assets/testimonial-1.jpeg';
+import testimonial2 from '@/assets/testimonial-2.jpeg';
 
 interface LandingPageProps {
   userData: UserData;
@@ -117,8 +119,8 @@ const LandingPage = ({ userData }: LandingPageProps) => {
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { name: "Gabriela Lyra - MG", text: "Eu achava que nunca ia conseguir, mas em 30 dias eu eliminei 7kg só com o truque do limão!" },
-              { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade." }
+              { name: "Gabriela Lyra - MG", text: "Eu achava que nunca ia conseguir, mas em 30 dias eu eliminei 7kg só com o truque do limão!", image: testimonial1 },
+              { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade.", image: testimonial2 }
             ].map((testimonial, index) => (
               <div key={index} className="bg-card p-6 rounded-3xl shadow-card space-y-4">
                 <div className="flex justify-between items-center mb-4">
@@ -129,14 +131,11 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                   </div>
                   <span className="text-muted-foreground text-xs">{testimonial.name}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="aspect-[4/5] bg-muted rounded-xl flex items-center justify-center">
-                    <span className="text-4xl">🔴</span>
-                  </div>
-                  <div className="aspect-[4/5] bg-muted rounded-xl flex items-center justify-center">
-                    <span className="text-4xl">🟢</span>
-                  </div>
-                </div>
+                <img 
+                  src={testimonial.image} 
+                  alt={`Transformação de ${testimonial.name}`}
+                  className="w-full rounded-xl object-cover"
+                />
                 <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
               </div>
             ))}
@@ -162,7 +161,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <div className="pt-6 border-t border-border">
                 <div className="text-muted-foreground line-through text-lg">De R$ 197,00</div>
                 <div className="text-forest text-5xl font-display font-bold">
-                  R$ 9,90 <span className="text-sm font-normal">à vista</span>
+                  R$ 14,97 <span className="text-sm font-normal">à vista</span>
                 </div>
               </div>
               <Button className="w-full py-6 bg-forest text-primary-foreground font-bold text-lg uppercase">
@@ -177,7 +176,8 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               </div>
               <h3 className="text-2xl font-display font-bold text-forest">Plano Completo + Bônus</h3>
               <ul className="space-y-3 text-foreground">
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Tudo do plano básico</li>
+                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Protocolo Completo</li>
+                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Planilha de Acompanhamento</li>
                 <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Técnica de Renovação Hormonal</li>
                 <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Chás Noturnos Detox</li>
                 <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Método Corpo em Ação</li>
@@ -185,7 +185,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <div className="pt-6 border-t border-primary/20">
                 <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
                 <div className="text-primary text-5xl font-display font-bold">
-                  R$ 19,90 <span className="text-sm font-normal text-muted-foreground">mais vantajoso</span>
+                  R$ 27,90 <span className="text-sm font-normal text-muted-foreground">mais vantajoso</span>
                 </div>
               </div>
               <Button className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
