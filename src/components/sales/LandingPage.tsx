@@ -225,7 +225,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                 </tr>
                 <tr className="bg-lime/20">
                   <td className="py-5 px-4 text-xl font-display font-bold text-lime">🍋 Fórmula do Limão</td>
-                  <td className="py-5 px-4 text-2xl font-display font-bold text-lime">R$ 19,90</td>
+                  <td className="py-5 px-4 text-2xl font-display font-bold text-lime">R$ 27,90</td>
                 </tr>
               </tbody>
             </table>
