@@ -12,8 +12,8 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
       icon: Droplet,
       title: 'Fase de Limpeza',
       description: 'Eliminação de toxinas acumuladas no organismo em até 72h',
-      color: 'text-lime',
-      bgColor: 'bg-lime/20',
+      color: 'text-lime-glow',
+      bgColor: 'bg-lime-glow/20',
     },
     {
       icon: Flame,
@@ -32,39 +32,42 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#1d3305' }}>
+    <div className="min-h-screen flex flex-col bg-forest relative overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 gradient-forest pointer-events-none" />
+      
       {/* Header with Progress */}
-      <div className="w-full px-4 pt-6 pb-4">
+      <div className="relative w-full px-4 pt-6 pb-4">
         <div className="flex justify-center mb-4">
           <h1 className="text-white text-xl font-display font-bold tracking-tight">
-            FÓRMULA DO <span className="text-lime">LIMÃO</span> 🍋
+            FÓRMULA DO <span className="text-lime-glow">LIMÃO</span> 🍋
           </h1>
         </div>
         <div className="w-full max-w-lg mx-auto">
           <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-lime transition-all duration-500 ease-out"
+              className="h-full bg-gradient-to-r from-lime to-lime-glow transition-all duration-500 ease-out"
               style={{ width: '90%' }}
             />
           </div>
-          <p className="text-center text-white/60 text-sm mt-2">
+          <p className="text-center text-white/50 text-sm mt-2">
             90% concluído
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 px-4 py-6 overflow-y-auto">
+      <div className="relative flex-1 px-4 py-6 overflow-y-auto">
         <div className="max-w-lg mx-auto space-y-8">
           {/* Title */}
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-2 bg-lime/20 px-4 py-2 rounded-full">
-              <span className="text-lime text-sm font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 bg-lime-glow/15 px-4 py-2 rounded-full border border-lime-glow/20">
+              <span className="text-lime-glow text-sm font-bold uppercase tracking-wider">
                 ✓ Análise Concluída
               </span>
             </div>
             <h2 className="text-white text-2xl md:text-3xl font-display font-bold leading-tight">
-              Veja como a <span className="text-lime">Fórmula do Limão</span> vai agir no seu metabolismo
+              Veja como a <span className="text-lime-glow">Fórmula do Limão</span> vai agir no seu metabolismo
             </h2>
           </div>
 
@@ -77,25 +80,25 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
               {phases.map((phase, index) => (
                 <div
                   key={phase.title}
-                  className="relative flex items-start gap-4 bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 hover:border-lime/30 transition-all duration-300"
+                  className="relative flex items-start gap-4 card-glow rounded-2xl p-5 hover:border-lime-glow/40 transition-all duration-300"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
                   {/* Icon */}
-                  <div className={`flex-shrink-0 w-16 h-16 ${phase.bgColor} rounded-xl flex items-center justify-center`}>
+                  <div className={`flex-shrink-0 w-16 h-16 ${phase.bgColor} rounded-xl flex items-center justify-center border border-white/5`}>
                     <phase.icon className={`w-8 h-8 ${phase.color}`} />
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-white/50 text-xs font-bold">
+                      <span className="text-white/40 text-xs font-bold">
                         FASE {index + 1}
                       </span>
                     </div>
                     <h3 className="text-white font-display font-bold text-lg mb-1">
                       {phase.title}
                     </h3>
-                    <p className="text-white/70 text-sm leading-relaxed">
+                    <p className="text-white/60 text-sm leading-relaxed">
                       {phase.description}
                     </p>
                   </div>
@@ -105,8 +108,8 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
           </div>
 
           {/* Schedule Image */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-            <p className="text-white/60 text-xs text-center uppercase tracking-wider mb-3">
+          <div className="card-glow rounded-2xl p-4">
+            <p className="text-white/50 text-xs text-center uppercase tracking-wider mb-3">
               Seu cronograma personalizado
             </p>
             <img 
@@ -123,9 +126,9 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
               { value: '14 dias', label: 'Resultados' },
               { value: '3x', label: 'Mais energia' },
             ].map((stat) => (
-              <div key={stat.label} className="bg-lime/10 rounded-xl p-3 text-center">
-                <p className="text-lime font-display font-bold text-xl">{stat.value}</p>
-                <p className="text-white/60 text-xs">{stat.label}</p>
+              <div key={stat.label} className="card-glow rounded-xl p-3 text-center">
+                <p className="text-lime-glow font-display font-bold text-xl">{stat.value}</p>
+                <p className="text-white/50 text-xs">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -133,15 +136,15 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
       </div>
 
       {/* Footer CTA */}
-      <div className="sticky bottom-0 p-4 bg-gradient-to-t from-[#1d3305] via-[#1d3305] to-transparent pt-8">
+      <div className="relative sticky bottom-0 p-4 bg-gradient-to-t from-forest via-forest to-transparent pt-8">
         <div className="max-w-lg mx-auto">
           <Button
             onClick={onContinue}
-            className="w-full py-6 bg-lime hover:bg-lime-dark text-forest font-display font-bold text-lg shadow-button animate-pulse-soft uppercase tracking-wide"
+            className="w-full py-6 bg-gradient-to-r from-lime to-lime-glow hover:from-lime-glow hover:to-lime text-forest font-display font-bold text-lg shadow-button animate-pulse-soft uppercase tracking-wide"
           >
             REVELAR MEU CRONOGRAMA <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-          <p className="text-center text-white/40 text-xs mt-3">
+          <p className="text-center text-white/30 text-xs mt-3">
             🔒 Plano exclusivo baseado nas suas respostas
           </p>
         </div>

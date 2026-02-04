@@ -25,26 +25,31 @@ const Calculating = ({ userData, onComplete }: CalculatingProps) => {
   }, [onComplete]);
 
   return (
-    <div className="min-h-screen bg-forest flex flex-col items-center justify-center p-6 text-center">
-      <div className="w-20 h-20 border-4 border-lime border-t-transparent rounded-full animate-spin mb-8"></div>
-      <h2 className="text-primary-foreground text-3xl font-display font-bold mb-4">
-        Preparando seu plano, {userData.name || 'visitante'}...
-      </h2>
-      <div className="w-full max-w-sm bg-forest/50 h-3 rounded-full overflow-hidden mb-12">
-        <div 
-          className="h-full bg-lime transition-all duration-100" 
-          style={{ width: `${progress}%` }} 
-        />
-      </div>
+    <div className="min-h-screen bg-forest relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 gradient-forest pointer-events-none" />
+      
+      <div className="relative z-10 flex flex-col items-center">
+        <div className="w-20 h-20 border-4 border-lime-glow border-t-transparent rounded-full animate-spin mb-8"></div>
+        <h2 className="text-primary-foreground text-3xl font-display font-bold mb-4">
+          Preparando seu plano, {userData.name || 'visitante'}...
+        </h2>
+        <div className="w-full max-w-sm bg-white/10 h-3 rounded-full overflow-hidden mb-12">
+          <div 
+            className="h-full bg-gradient-to-r from-lime to-lime-glow transition-all duration-100" 
+            style={{ width: `${progress}%` }} 
+          />
+        </div>
 
-      <div className="bg-card rounded-3xl p-6 shadow-2xl max-w-md animate-pulse">
-        <p className="text-forest font-bold mb-4">Enquanto analisamos, veja este resultado:</p>
-        <img 
-          src={socialProofImage} 
-          alt="Resultado de transformação" 
-          className="w-full rounded-xl object-cover"
-        />
-        <p className="text-muted-foreground text-sm mt-3 italic">"Resultado real de uma de nossas alunas"</p>
+        <div className="card-glow rounded-3xl p-6 shadow-2xl max-w-md">
+          <p className="text-lime-glow font-bold mb-4">Enquanto analisamos, veja este resultado:</p>
+          <img 
+            src={socialProofImage} 
+            alt="Resultado de transformação" 
+            className="w-full rounded-xl object-cover"
+          />
+          <p className="text-white/50 text-sm mt-3 italic">"Resultado real de uma de nossas alunas"</p>
+        </div>
       </div>
     </div>
   );
