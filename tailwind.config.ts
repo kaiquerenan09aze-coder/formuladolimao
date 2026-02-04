@@ -55,8 +55,12 @@ export default {
           DEFAULT: "hsl(var(--lime))",
           light: "hsl(var(--lime-light))",
           dark: "hsl(var(--lime-dark))",
+          glow: "hsl(var(--lime-glow))",
         },
-        forest: "hsl(var(--forest))",
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          light: "hsl(var(--forest-light))",
+        },
         gold: {
           DEFAULT: "hsl(var(--gold))",
           dark: "hsl(var(--gold-dark))",

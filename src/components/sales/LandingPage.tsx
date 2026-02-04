@@ -80,16 +80,17 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </div>
 
       {/* Hero Section */}
-      <section className="bg-forest text-primary-foreground pt-12 pb-20 px-4 text-center">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <section className="bg-forest relative overflow-hidden text-primary-foreground pt-12 pb-20 px-4 text-center">
+        <div className="absolute inset-0 gradient-forest pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1] tracking-tight">
             {userData.name ? `${userData.name}, ` : ''}EMAGREÇA{' '}
-            <span className="text-lime underline">ATÉ {weightToLose}KG</span> EM APENAS 28 DIAS COM A FÓRMULA DO LIMÃO
+            <span className="text-lime-glow underline">ATÉ {weightToLose}KG</span> EM APENAS 28 DIAS COM A FÓRMULA DO LIMÃO
           </h1>
           <div className="flex flex-wrap justify-center gap-3 mt-8">
-            <span className="bg-lime/20 px-4 py-2 rounded-full text-xs font-bold border border-lime/30">🔥 REDUZ A FOME</span>
-            <span className="bg-lime/20 px-4 py-2 rounded-full text-xs font-bold border border-lime/30">💪 SECA GORDURA LOCALIZADA</span>
-            <span className="bg-lime/20 px-4 py-2 rounded-full text-xs font-bold border border-lime/30">⚡ ATIVA O METABOLISMO</span>
+            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
+            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA LOCALIZADA</span>
+            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">⚡ ATIVA O METABOLISMO</span>
           </div>
         </div>
       </section>
@@ -197,8 +198,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </section>
 
       {/* Comparison */}
-      <section className="bg-forest text-primary-foreground py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+      <section className="bg-forest relative overflow-hidden text-primary-foreground py-16 px-4">
+        <div className="absolute inset-0 gradient-forest pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto">
           <h2 className="text-3xl font-display font-bold mb-12 text-center uppercase">
             POR QUE SOMOS DIFERENTES?
           </h2>
@@ -206,8 +208,8 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-primary-foreground/10">
-                  <th className="py-4 font-bold text-primary-foreground/60 uppercase text-xs">Alternativa</th>
-                  <th className="py-4 font-bold text-primary-foreground/60 uppercase text-xs">Custo Estimado</th>
+                  <th className="py-4 font-bold text-primary-foreground/50 uppercase text-xs">Alternativa</th>
+                  <th className="py-4 font-bold text-primary-foreground/50 uppercase text-xs">Custo Estimado</th>
                 </tr>
               </thead>
               <tbody>
@@ -223,9 +225,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                   <td className="py-5 text-lg">Academia + Personal</td>
                   <td className="py-5 font-bold text-destructive">R$ 1.300,00 / mês</td>
                 </tr>
-                <tr className="bg-lime/20">
-                  <td className="py-5 px-4 text-xl font-display font-bold text-lime">🍋 Fórmula do Limão</td>
-                  <td className="py-5 px-4 text-2xl font-display font-bold text-lime">R$ 27,90</td>
+                <tr className="bg-lime-glow/15 rounded-xl">
+                  <td className="py-5 px-4 text-xl font-display font-bold text-lime-glow">🍋 Fórmula do Limão</td>
+                  <td className="py-5 px-4 text-2xl font-display font-bold text-lime-glow">R$ 27,90</td>
                 </tr>
               </tbody>
             </table>
