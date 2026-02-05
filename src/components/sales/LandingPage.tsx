@@ -98,11 +98,11 @@ const LandingPage = ({ userData }: LandingPageProps) => {
 
        {/* Hero Image Section */}
        <section className="px-4 -mt-12 mb-16">
-         <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden">
+         <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex items-center justify-center bg-card">
            <img 
              src={heroSpecialist} 
              alt="Especialista apresentando a Fórmula do Limão"
-             className="w-full h-auto object-cover"
+             className="w-full h-auto object-contain max-h-[500px] md:max-h-none"
            />
          </div>
       </section>
@@ -161,7 +161,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                 </div>
               </div>
               <Button className="w-full py-6 bg-forest text-primary-foreground font-bold text-lg uppercase">
-                Quero o Plano Básico
+                <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer" className="w-full">
+                  Quero o Plano Básico
+                </a>
               </Button>
             </div>
 
@@ -184,8 +186,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                   R$ 27,90 <span className="text-sm font-normal text-muted-foreground">mais vantajoso</span>
                 </div>
               </div>
-              <Button className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
-                Quero o Plano Completo
+              <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
+                <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer">
+                  Quero o Plano Completo
+                </a>
               </Button>
             </div>
           </div>
@@ -244,8 +248,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
 
       {/* Footer CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-md border-t border-border md:hidden z-40">
-        <Button className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button animate-pulse-soft">
-          Garantir minha vaga agora! <ArrowRight className="ml-2 w-5 h-5" />
+        <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button animate-pulse-soft">
+          <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer">
+            Garantir minha vaga agora! <ArrowRight className="ml-2 w-5 h-5" />
+          </a>
         </Button>
       </div>
     </div>

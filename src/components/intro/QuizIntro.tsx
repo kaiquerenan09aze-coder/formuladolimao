@@ -55,12 +55,11 @@
              Começar Agora
              <ArrowRight className="ml-2 w-6 h-6" />
            </Button>
-         </div>
- 
-         {/* Trust badge */}
-         <div className="pt-4 flex items-center justify-center gap-2 text-primary-foreground/40 text-xs">
-           <Lock className="w-3 h-3 text-gold" />
-           <span>Suas informações estão 100% seguras</span>
+            {/* Trust badge - below button */}
+            <div className="mt-4 flex items-center justify-center gap-2 text-primary-foreground/40 text-xs">
+              <Lock className="w-3 h-3 text-gold" />
+              <span>Suas informações estão 100% seguras</span>
+            </div>
          </div>
        </div>
  
