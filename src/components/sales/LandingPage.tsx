@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
-import { Check, Star, Play, Lock, Clock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
+ import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
+ import heroSpecialist from '@/assets/hero-specialist.png';
 
 interface LandingPageProps {
   userData: UserData;
@@ -95,21 +96,15 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="px-4 -mt-12 mb-16">
-        <div className="max-w-3xl mx-auto bg-foreground rounded-3xl aspect-video shadow-2xl overflow-hidden relative group">
-          <div className="w-full h-full bg-muted flex items-center justify-center">
-            <span className="text-8xl">🍋</span>
-          </div>
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <button className="w-20 h-20 gradient-primary rounded-full flex items-center justify-center pl-2 hover:scale-110 transition-transform shadow-button">
-              <Play className="w-8 h-8 text-primary-foreground fill-current" />
-            </button>
-          </div>
-          <div className="absolute bottom-4 left-0 right-0 text-center text-primary-foreground/70 text-sm">
-            Toque no play para assistir
-          </div>
-        </div>
+       {/* Hero Image Section */}
+       <section className="px-4 -mt-12 mb-16">
+         <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden">
+           <img 
+             src={heroSpecialist} 
+             alt="Especialista apresentando a Fórmula do Limão"
+             className="w-full h-auto object-cover"
+           />
+         </div>
       </section>
 
       {/* Testimonials */}
