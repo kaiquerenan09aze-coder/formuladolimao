@@ -47,12 +47,12 @@
              className={cn(
                "w-full py-7 px-8 rounded-2xl",
                "bg-gradient-to-r from-lime to-lime-glow",
-                "text-forest font-display font-bold text-base md:text-xl uppercase tracking-wide",
+               "text-forest font-display font-bold text-xl uppercase tracking-wide",
                "shadow-button hover:shadow-glow transition-all duration-300",
                "hover:scale-[1.02] active:scale-[0.98]"
              )}
            >
-              Quero destravar meu metabolismo
+             Começar Agora
              <ArrowRight className="ml-2 w-6 h-6" />
            </Button>
             {/* Trust badge - below button */}
