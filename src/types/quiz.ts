@@ -1,4 +1,4 @@
- export type AppState = 'intro' | 'quiz' | 'calculating' | 'analysis' | 'result' | 'sales_page';
+export type AppState = 'quiz' | 'calculating' | 'analysis' | 'result' | 'sales_page';
 
 export interface UserData {
   age?: string;
