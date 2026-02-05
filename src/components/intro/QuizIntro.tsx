@@ -21,24 +21,21 @@
            </h1>
          </div>
  
-         {/* Main Headline */}
-         <div className="space-y-6">
-           <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
-             Descubra o que pode estar{' '}
-             <span className="text-lime-glow">influenciando</span> o seu processo de emagrecimento
-           </h2>
-         </div>
- 
-         {/* Subheadline */}
-         <div className="space-y-3">
-           <p className="text-primary-foreground/70 text-lg leading-relaxed">
-             Veja por que esse ritual com limão virou tendência entre mulheres.
-           </p>
-           <p className="text-primary-foreground/50 text-sm flex items-center justify-center gap-2">
-             <Sparkles className="w-4 h-4 text-lime-glow" />
-             Em menos de 1 minuto receba um direcionamento personalizado.
-           </p>
-         </div>
+          {/* Main Headline */}
+          <div className="space-y-6">
+            <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
+              Algo no seu corpo pode estar{' '}
+              <span className="text-lime-glow">interferindo</span> nos seus resultados
+            </h2>
+          </div>
+
+          {/* Subheadline */}
+          <div className="space-y-3">
+            <p className="text-primary-foreground/70 text-lg leading-relaxed flex items-center justify-center gap-2">
+              <Sparkles className="w-4 h-4 text-lime-glow" />
+              Descubra, em menos de 1 minuto, fatores que podem estar influenciando seu processo de emagrecimento.
+            </p>
+          </div>
  
          {/* CTA Button */}
          <div className="pt-6">
