@@ -80,8 +80,19 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         )}
       </div>
 
-      {/* Hero Section */}
-      <section className="bg-forest relative overflow-hidden text-primary-foreground pt-12 pb-20 px-4 text-center">
+      {/* Hero Image Section - Now at the top */}
+      <section className="px-4 py-8 bg-card">
+        <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex items-center justify-center bg-card">
+          <img 
+            src={heroSpecialist} 
+            alt="Especialista apresentando a Fórmula do Limão"
+            className="w-full h-auto object-contain max-h-[500px] md:max-h-none"
+          />
+        </div>
+      </section>
+
+      {/* Hero Text Section */}
+      <section className="bg-forest relative overflow-hidden text-primary-foreground pt-12 pb-12 px-4 text-center">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1] tracking-tight">
@@ -94,17 +105,6 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">⚡ ATIVA O METABOLISMO</span>
           </div>
         </div>
-      </section>
-
-       {/* Hero Image Section */}
-       <section className="px-4 -mt-12 mb-16">
-         <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex items-center justify-center bg-card">
-           <img 
-             src={heroSpecialist} 
-             alt="Especialista apresentando a Fórmula do Limão"
-             className="w-full h-auto object-contain max-h-[500px] md:max-h-none"
-           />
-         </div>
       </section>
 
       {/* Testimonials */}
@@ -187,7 +187,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                 </div>
               </div>
               <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
-                <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer">
+                <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
                   Quero o Plano Completo
                 </a>
               </Button>
@@ -249,7 +249,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       {/* Footer CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-md border-t border-border md:hidden z-40">
         <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button animate-pulse-soft">
-          <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer">
+          <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
             Garantir minha vaga agora! <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </Button>
