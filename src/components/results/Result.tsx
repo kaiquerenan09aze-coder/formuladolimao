@@ -61,9 +61,11 @@ const Result = ({ userData, onContinue }: ResultProps) => {
 
         <Button
           onClick={onContinue}
-          className="w-full py-6 gradient-primary text-primary-foreground font-display font-bold text-xl shadow-button animate-bounce-subtle"
+          className="w-full py-5 md:py-6 gradient-primary text-primary-foreground font-display font-bold text-sm sm:text-base md:text-xl shadow-button animate-bounce-subtle whitespace-normal leading-tight"
         >
-          QUERO DESTRAVAR MEU METABOLISMO <ArrowRight className="ml-2 w-5 h-5" />
+          <span className="flex items-center justify-center gap-2 flex-wrap">
+            QUERO DESTRAVAR MEU METABOLISMO <ArrowRight className="w-5 h-5 flex-shrink-0" />
+          </span>
         </Button>
       </main>
     </div>
