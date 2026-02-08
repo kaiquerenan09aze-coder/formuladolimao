@@ -139,59 +139,54 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Trust + Pricing */}
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-center text-forest text-3xl font-display font-bold mb-12">ESCOLHA SEU PLANO</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Basic Plan */}
-            <div className="border-4 border-border rounded-[2.5rem] p-8 space-y-6 relative overflow-hidden group hover:border-lime/50 transition-all bg-card">
-              <div className="bg-muted text-muted-foreground font-bold text-xs px-4 py-1 rounded-full w-fit uppercase mb-4">
-                Plano Básico
-              </div>
-              <h3 className="text-2xl font-display font-bold text-forest">Protocolo Truque do Limão</h3>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Protocolo Completo</li>
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Planilha de Acompanhamento</li>
-              </ul>
-              <div className="pt-6 border-t border-border">
-                <div className="text-muted-foreground line-through text-lg">De R$ 197,00</div>
-                <div className="text-forest text-5xl font-display font-bold">
-                  R$ 14,97 <span className="text-sm font-normal">à vista</span>
-                </div>
-              </div>
-              <Button className="w-full py-6 bg-forest text-primary-foreground font-bold text-lg uppercase">
-                <a href="https://go.perfectpay.com.br/PPU38CQ76TN" target="_blank" rel="noopener noreferrer" className="w-full">
-                  Quero o Plano Básico
-                </a>
-              </Button>
-            </div>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-center text-forest text-3xl font-display font-bold mb-4">GARANTA SEU ACESSO AGORA</h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">Junte-se a milhares de mulheres que já transformaram seus corpos</p>
 
-            {/* Complete Plan */}
-            <div className="border-4 border-primary rounded-[2.5rem] p-8 space-y-6 relative overflow-hidden shadow-card bg-lime-light">
-              <div className="gradient-primary text-primary-foreground font-bold text-xs px-4 py-1 rounded-full w-fit uppercase mb-4">
-                MAIS VENDIDO
+          {/* Trust Badges */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            {[
+              { icon: <ShieldCheck className="w-6 h-6 text-primary" />, label: "Compra 100% Segura" },
+              { icon: <Lock className="w-6 h-6 text-primary" />, label: "Dados Protegidos" },
+              { icon: <Star className="w-6 h-6 text-gold fill-gold" />, label: "+12.000 Alunas" },
+              { icon: <Check className="w-6 h-6 text-primary" />, label: "Garantia de 30 dias" },
+            ].map((badge, i) => (
+              <div key={i} className="flex flex-col items-center gap-2 bg-secondary rounded-2xl p-4 text-center">
+                {badge.icon}
+                <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">{badge.label}</span>
               </div>
-              <h3 className="text-2xl font-display font-bold text-forest">Plano Completo + Bônus</h3>
-              <ul className="space-y-3 text-foreground">
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Protocolo Completo</li>
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Planilha de Acompanhamento</li>
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Técnica de Renovação Hormonal</li>
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Chás Noturnos Detox</li>
-                <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Método Corpo em Ação</li>
-              </ul>
-              <div className="pt-6 border-t border-primary/20">
-                <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
-                <div className="text-primary text-5xl font-display font-bold">
-                  R$ 27,90 <span className="text-sm font-normal text-muted-foreground">mais vantajoso</span>
-                </div>
-              </div>
-              <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
-                <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
-                  Quero o Plano Completo
-                </a>
-              </Button>
+            ))}
+          </div>
+
+          {/* Single Complete Plan */}
+          <div className="border-4 border-primary rounded-[2.5rem] p-8 md:p-10 space-y-6 relative overflow-hidden shadow-card bg-lime-light">
+            <div className="gradient-primary text-primary-foreground font-bold text-xs px-4 py-1 rounded-full w-fit uppercase mb-4">
+              OFERTA ESPECIAL
             </div>
+            <h3 className="text-2xl font-display font-bold text-forest">Plano Completo + Bônus Exclusivos</h3>
+            <ul className="space-y-3 text-foreground">
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Protocolo Completo do Truque do Limão</li>
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Planilha de Acompanhamento</li>
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Técnica de Renovação Hormonal</li>
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Chás Noturnos Detox</li>
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Método Corpo em Ação</li>
+            </ul>
+            <div className="pt-6 border-t border-primary/20">
+              <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
+              <div className="text-primary text-5xl font-display font-bold">
+                R$ 27,90 <span className="text-sm font-normal text-muted-foreground">à vista</span>
+              </div>
+            </div>
+            <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
+              <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
+                Quero Começar Agora! <ArrowRight className="ml-2 w-5 h-5" />
+              </a>
+            </Button>
+            <p className="text-center text-muted-foreground text-xs flex items-center justify-center gap-1">
+              <Lock className="w-3 h-3" /> Pagamento seguro • Acesso imediato após a compra
+            </p>
           </div>
         </div>
       </section>
