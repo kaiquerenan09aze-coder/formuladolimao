@@ -23,18 +23,18 @@
  
           {/* Main Headline */}
           <div className="space-y-6">
-            <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
-              Algo no seu corpo pode estar{' '}
-              <span className="text-lime-glow">interferindo</span> nos seus resultados
+          <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
+              O primeiro passo para um emagrecimento mais{' '}
+              <span className="text-lime-glow">eficiente</span>
             </h2>
           </div>
 
           {/* Subheadline */}
           <div className="space-y-3">
-            <p className="text-primary-foreground/70 text-lg leading-relaxed flex items-center justify-center gap-2">
-              <Sparkles className="w-4 h-4 text-lime-glow" />
-              Descubra, em menos de 1 minuto, fatores que podem estar influenciando seu processo de emagrecimento.
-            </p>
+             <p className="text-primary-foreground/70 text-lg leading-relaxed flex items-center justify-center gap-2">
+               <Sparkles className="w-4 h-4 text-lime-glow" />
+               Veja no quiz quais fatores podem ajudar você a avançar.
+             </p>
           </div>
  
          {/* CTA Button */}
