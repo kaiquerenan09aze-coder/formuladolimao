@@ -173,14 +173,18 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Chás Noturnos Detox</li>
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Método Corpo em Ação</li>
             </ul>
-            <div className="pt-6 border-t border-primary/20">
+            <div className="pt-6 border-t border-primary/20 text-center space-y-2">
               <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
-              <div className="text-primary text-5xl font-display font-bold">
-                R$ 27,90 <span className="text-sm font-normal text-muted-foreground">à vista</span>
+              <div className="text-muted-foreground text-sm font-bold uppercase tracking-wide">Por apenas:</div>
+              <div className="text-primary text-2xl font-display font-bold">
+                5x de <span className="text-5xl md:text-6xl">R$ 5,58</span>
+              </div>
+              <div className="text-muted-foreground text-base">
+                ou <span className="text-primary font-bold text-lg">R$ 27,90</span> à vista
               </div>
             </div>
             <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
-              <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
+              <a href="https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025" target="_blank" rel="noopener noreferrer">
                 Quero Começar Agora! <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
@@ -244,7 +248,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       {/* Footer CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-md border-t border-border md:hidden z-40">
         <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button animate-pulse-soft">
-          <a href="https://go.perfectpay.com.br/PPU38CQ76U8" target="_blank" rel="noopener noreferrer">
+          <a href="https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025" target="_blank" rel="noopener noreferrer">
             Garantir minha vaga agora! <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </Button>
