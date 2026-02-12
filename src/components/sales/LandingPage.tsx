@@ -92,17 +92,17 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </section>
 
       {/* Hero Text Section */}
-      <section className="bg-forest relative overflow-hidden text-primary-foreground pt-12 pb-12 px-4 text-center">
+      <section className="bg-forest relative overflow-hidden text-primary-foreground pt-10 pb-10 px-4 text-center">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto space-y-6">
-          <h1 className="text-4xl md:text-6xl font-display font-bold leading-[1.1] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-6xl font-display font-bold leading-[1.1] tracking-tight">
             {userData.name ? `${userData.name}, ` : ''}EMAGREÇA{' '}
             <span className="text-lime-glow underline">ATÉ {weightToLose}KG</span> EM APENAS 28 DIAS COM A FÓRMULA DO LIMÃO
           </h1>
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
-            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
-            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA LOCALIZADA</span>
-            <span className="bg-lime-glow/15 px-4 py-2 rounded-full text-xs font-bold border border-lime-glow/25">⚡ ATIVA O METABOLISMO</span>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
+            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
+            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA</span>
+            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">⚡ ATIVA METABOLISMO</span>
           </div>
         </div>
       </section>
@@ -140,10 +140,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </section>
 
       {/* Trust + Pricing */}
-      <section className="py-20 px-4">
+      <section className="py-12 sm:py-20 px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-center text-forest text-3xl font-display font-bold mb-4">GARANTA SEU ACESSO AGORA</h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Junte-se a milhares de mulheres que já transformaram seus corpos</p>
+          <h2 className="text-center text-forest text-2xl sm:text-3xl font-display font-bold mb-4">GARANTA SEU ACESSO AGORA</h2>
+          <p className="text-center text-muted-foreground mb-8 sm:mb-12 text-base sm:text-lg">Junte-se a milhares de mulheres que já transformaram seus corpos</p>
 
           {/* Trust Badges */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
@@ -161,7 +161,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
           </div>
 
           {/* Single Complete Plan */}
-          <div className="border-4 border-primary rounded-[2.5rem] p-8 md:p-10 space-y-6 relative overflow-hidden shadow-card bg-lime-light">
+          <div className="border-4 border-primary rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 space-y-6 relative overflow-hidden shadow-card bg-lime-light">
             <div className="gradient-primary text-primary-foreground font-bold text-xs px-4 py-1 rounded-full w-fit uppercase mb-4">
               OFERTA ESPECIAL
             </div>
@@ -176,8 +176,8 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <div className="pt-6 border-t border-primary/20 text-center space-y-2">
               <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
               <div className="text-muted-foreground text-sm font-bold uppercase tracking-wide">Por apenas:</div>
-              <div className="text-primary text-2xl font-display font-bold">
-                5x de <span className="text-5xl md:text-6xl">R$ 5,58</span>
+              <div className="text-primary text-xl sm:text-2xl font-display font-bold">
+                5x de <span className="text-4xl sm:text-5xl md:text-6xl">R$ 5,58</span>
               </div>
               <div className="text-muted-foreground text-base">
                 ou <span className="text-primary font-bold text-lg">R$ 27,90</span> à vista
@@ -196,10 +196,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </section>
 
       {/* Comparison */}
-      <section className="bg-forest relative overflow-hidden text-primary-foreground py-16 px-4">
+      <section className="bg-forest relative overflow-hidden text-primary-foreground py-12 sm:py-16 px-4">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto">
-          <h2 className="text-3xl font-display font-bold mb-12 text-center uppercase">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold mb-8 sm:mb-12 text-center uppercase">
             POR QUE SOMOS DIFERENTES?
           </h2>
           <div className="overflow-x-auto">
@@ -212,20 +212,20 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               </thead>
               <tbody>
                 <tr className="border-b border-primary-foreground/5">
-                  <td className="py-5 text-lg">Medicamentos de Farmácia</td>
-                  <td className="py-5 font-bold text-destructive">R$ 3.000,00</td>
+                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Medicamentos de Farmácia</td>
+                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 3.000,00</td>
                 </tr>
                 <tr className="border-b border-primary-foreground/5">
-                  <td className="py-5 text-lg">Nutricionista</td>
-                  <td className="py-5 font-bold text-destructive">R$ 500,00 / mês</td>
+                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Nutricionista</td>
+                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 500,00 / mês</td>
                 </tr>
                 <tr className="border-b border-primary-foreground/5">
-                  <td className="py-5 text-lg">Academia + Personal</td>
-                  <td className="py-5 font-bold text-destructive">R$ 1.300,00 / mês</td>
+                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Academia + Personal</td>
+                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 1.300,00 / mês</td>
                 </tr>
                 <tr className="bg-lime-glow/15 rounded-xl">
-                  <td className="py-5 px-4 text-xl font-display font-bold text-lime-glow">🍋 Fórmula do Limão</td>
-                  <td className="py-5 px-4 text-2xl font-display font-bold text-lime-glow">R$ 27,90</td>
+                  <td className="py-4 sm:py-5 px-3 sm:px-4 text-base sm:text-xl font-display font-bold text-lime-glow">🍋 Fórmula do Limão</td>
+                  <td className="py-4 sm:py-5 px-3 sm:px-4 text-xl sm:text-2xl font-display font-bold text-lime-glow">R$ 27,90</td>
                 </tr>
               </tbody>
             </table>
@@ -234,11 +234,11 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       </section>
 
       {/* Guarantee */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-3xl mx-auto bg-secondary p-12 rounded-[3rem] border-2 border-dashed border-border">
-          <ShieldCheck className="w-24 h-24 mx-auto mb-8 text-primary" />
-          <h2 className="text-3xl font-display font-bold text-forest mb-6">RISCO ZERO POR 30 DIAS</h2>
-          <p className="text-muted-foreground leading-relaxed text-lg">
+      <section className="py-12 sm:py-20 px-4 text-center">
+        <div className="max-w-3xl mx-auto bg-secondary p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] border-2 border-dashed border-border">
+          <ShieldCheck className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-8 text-primary" />
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-forest mb-4 sm:mb-6">RISCO ZERO POR 30 DIAS</h2>
+          <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
             Se você não eliminar ao menos 5kg em 30 dias, eu devolvo 100% do seu dinheiro, sem questionar. 
             Seu risco é zero. Seu resultado é garantido.
           </p>
