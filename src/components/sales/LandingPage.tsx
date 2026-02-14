@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
- import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
- import heroSpecialist from '@/assets/hero-specialist.png';
 
 interface LandingPageProps {
   userData: UserData;
 }
 
 const LandingPage = ({ userData }: LandingPageProps) => {
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes
+  const [timeLeft, setTimeLeft] = useState(1200);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -37,7 +36,6 @@ const LandingPage = ({ userData }: LandingPageProps) => {
   };
 
   const { min, sec } = formatTimeParts(timeLeft);
-  const weightToLose = (userData.currentWeight || 70) - (userData.desiredWeight || 60);
 
   return (
     <div className="bg-card min-h-screen pb-24">
@@ -50,7 +48,6 @@ const LandingPage = ({ userData }: LandingPageProps) => {
           <Flame className={cn("w-4 h-4", timeLeft < 300 ? "text-gold" : "text-destructive-foreground")} />
           <span className="text-xs md:text-sm font-bold uppercase tracking-widest">A oferta expira em breve:</span>
         </div>
-        
         <div className="flex items-center gap-1 font-mono">
           <div className="flex flex-col items-center">
             <div className="bg-black/20 backdrop-blur-sm rounded-lg px-3 py-1 text-2xl font-bold tabular-nums border border-white/20 min-w-[3rem] text-center">
@@ -58,9 +55,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             </div>
             <span className="text-[10px] uppercase font-bold opacity-70">Min</span>
           </div>
-          
           <div className="text-2xl font-bold mb-4">:</div>
-          
           <div className="flex flex-col items-center">
             <div className={cn(
               "bg-black/20 backdrop-blur-sm rounded-lg px-3 py-1 text-2xl font-bold tabular-nums border border-white/20 min-w-[3rem] text-center",
@@ -72,7 +67,6 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <span className="text-[10px] uppercase font-bold opacity-70">Seg</span>
           </div>
         </div>
-
         {timeLeft < 300 && (
           <div className="hidden lg:block bg-card text-destructive px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter animate-bounce">
             Últimas vagas!
@@ -80,25 +74,35 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         )}
       </div>
 
-      {/* Hero Image Section - Now at the top */}
-      <section className="px-4 py-8 bg-card">
-        <div className="max-w-3xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex items-center justify-center bg-card">
-          <img 
-            src={heroSpecialist} 
-            alt="Especialista apresentando a Fórmula do Limão"
-            className="w-full h-auto object-contain max-h-[500px] md:max-h-none"
-          />
-        </div>
-      </section>
-
-      {/* Hero Text Section */}
+      {/* Hero Text Section - No specialist image */}
       <section className="bg-forest relative overflow-hidden text-primary-foreground pt-10 pb-10 px-4 text-center">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto space-y-6">
-          <h1 className="text-2xl sm:text-3xl md:text-6xl font-display font-bold leading-[1.1] tracking-tight">
-            {userData.name ? `${userData.name}, ` : ''}EMAGREÇA{' '}
-            <span className="text-lime-glow underline">ATÉ {weightToLose}KG</span> EM APENAS 28 DIAS COM A FÓRMULA DO LIMÃO
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold leading-[1.1] tracking-tight">
+            {userData.name ? `${userData.name}, ` : ''}agora que entendemos seu momento…
           </h1>
+          <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            A <span className="text-lime-glow font-bold">Fórmula do Limão</span> foi desenvolvida para mulheres que:
+          </p>
+          <div className="flex flex-col items-center gap-3 mt-6 text-left max-w-md mx-auto">
+            <div className="flex items-center gap-3 w-full">
+              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
+              <span className="text-primary-foreground/90 text-sm sm:text-base">Sentem que o corpo mudou</span>
+            </div>
+            <div className="flex items-center gap-3 w-full">
+              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
+              <span className="text-primary-foreground/90 text-sm sm:text-base">Não querem dietas extremas</span>
+            </div>
+            <div className="flex items-center gap-3 w-full">
+              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
+              <span className="text-primary-foreground/90 text-sm sm:text-base">Precisam reativar o metabolismo com estratégia</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <p className="text-lime-glow font-display font-bold text-lg sm:text-xl md:text-2xl">
+              "Veja resultados visíveis nas primeiras semanas com um protocolo estruturado."
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
             <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
             <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA</span>
@@ -239,8 +243,8 @@ const LandingPage = ({ userData }: LandingPageProps) => {
           <ShieldCheck className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-8 text-primary" />
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-forest mb-4 sm:mb-6">RISCO ZERO POR 30 DIAS</h2>
           <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-            Se você não eliminar ao menos 5kg em 30 dias, eu devolvo 100% do seu dinheiro, sem questionar. 
-            Seu risco é zero. Seu resultado é garantido.
+            Se você não ficar satisfeita em 30 dias, devolvemos 100% do seu dinheiro, sem questionar. 
+            Seu risco é zero.
           </p>
         </div>
       </section>

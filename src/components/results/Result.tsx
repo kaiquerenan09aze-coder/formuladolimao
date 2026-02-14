@@ -1,7 +1,7 @@
 import { UserData } from '@/types/quiz';
 import BMIChart from './BMIChart';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface ResultProps {
   userData: UserData;
@@ -12,6 +12,14 @@ const Result = ({ userData, onContinue }: ResultProps) => {
   const heightInMeters = (userData.height || 165) / 100;
   const bmi = (userData.currentWeight || 70) / (heightInMeters * heightInMeters);
 
+  const getBMILabel = (value: number) => {
+    if (value < 18.5) return 'Abaixo do peso';
+    if (value < 25) return 'Normal';
+    if (value < 30) return 'Sobrepeso';
+    if (value < 35) return 'Obesidade leve';
+    return 'Obesidade';
+  };
+
   return (
     <div className="min-h-screen bg-secondary flex flex-col items-center">
       <div className="bg-forest w-full py-6 flex justify-center sticky top-0 z-10">
@@ -21,41 +29,46 @@ const Result = ({ userData, onContinue }: ResultProps) => {
       </div>
 
       <main className="w-full max-w-lg px-4 py-8 space-y-6">
-        <div className="text-center mb-8">
-          <h2 className="text-forest text-2xl font-display font-bold leading-tight">
-            {userData.name}, veja como a Fórmula do Limão está transformando vidas!
+        {/* Diagnóstico */}
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 bg-lime/15 px-4 py-2 rounded-full border border-lime/20 mb-4">
+            <span className="text-primary text-sm font-bold uppercase tracking-wider">
+              🔎 Análise concluída
+            </span>
+          </div>
+          <h2 className="text-forest text-xl sm:text-2xl font-display font-bold leading-tight">
+            Com base nas suas respostas, identificamos indícios de que seu metabolismo pode estar mais lento do que o ideal.
           </h2>
         </div>
 
-        <div className="bg-destructive/10 border-l-4 border-destructive p-4 rounded-r-xl flex items-start gap-4">
-          <AlertTriangle className="text-destructive w-5 h-5 mt-1 flex-shrink-0" />
-          <div>
-            <p className="text-destructive font-bold uppercase text-sm">
-              Alerta: Metabolismo Lento Detectado
-            </p>
-          </div>
+        <div className="bg-card rounded-3xl p-6 sm:p-8 shadow-card space-y-4">
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            Seu corpo pode estar em um <span className="text-destructive font-bold">"estado de estocagem"</span>, acumulando gordura mais rápido do que deveria — principalmente na região abdominal.
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            Isso <span className="font-bold">não significa falta de esforço</span>. Significa que seu metabolismo pode não estar recebendo os estímulos corretos para o momento que você vive hoje.
+          </p>
         </div>
 
-        <div className="bg-card rounded-3xl p-8 shadow-card text-center space-y-4">
+        {/* Mini Relatório */}
+        <div className="bg-card rounded-3xl p-6 sm:p-8 shadow-card text-center space-y-4">
           <p className="text-muted-foreground font-bold uppercase tracking-widest text-sm">
-            Seu Índice Corporal Atual:
+            📊 Seu índice corporal atual:
           </p>
           <BMIChart bmi={bmi} />
           <div className="pt-4 border-t border-border">
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Seu corpo entrou em{' '}
-              <span className="text-destructive font-bold">"Estado de Estocagem"</span>. 
-              Infelizmente, isso significa que você acumula gordura 3x mais rápido que uma 
-              pessoa normal, principalmente na barriga.
+            <p className="text-muted-foreground text-sm">
+              Classificação: <span className="font-bold">{getBMILabel(bmi)}</span>
             </p>
           </div>
         </div>
 
         <div className="bg-gold/10 border-2 border-gold/30 rounded-3xl p-6 text-center space-y-3">
-          <p className="text-gold-dark font-bold">⚠️ O que isso significa?</p>
           <p className="text-gold-dark/80 text-sm">
-            Se nada for feito HOJE, a tendência é você ganhar mais{' '}
-            <span className="font-bold">4 a 6kg</span> nas próximas semanas.
+            Se nada for ajustado, a tendência é que o peso continue aumentando gradualmente nas próximas semanas.
+          </p>
+          <p className="text-gold-dark font-bold text-sm">
+            Mas a boa notícia é: <span className="text-primary">isso pode ser revertido.</span>
           </p>
         </div>
 

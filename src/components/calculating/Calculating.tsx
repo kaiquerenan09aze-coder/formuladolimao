@@ -9,6 +9,7 @@ interface CalculatingProps {
 
 const Calculating = ({ userData, onComplete }: CalculatingProps) => {
   const [progress, setProgress] = useState(0);
+  const [statusText, setStatusText] = useState('Analisando suas respostas…');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,16 +25,28 @@ const Calculating = ({ userData, onComplete }: CalculatingProps) => {
     return () => clearInterval(timer);
   }, [onComplete]);
 
+  useEffect(() => {
+    if (progress < 40) {
+      setStatusText('Analisando suas respostas…');
+    } else if (progress < 70) {
+      setStatusText('⏳ Detectando padrões metabólicos…');
+    } else {
+      setStatusText('90% concluído…');
+    }
+  }, [progress]);
+
   return (
     <div className="min-h-screen bg-forest relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
-      {/* Background gradient overlay */}
       <div className="absolute inset-0 gradient-forest pointer-events-none" />
       
       <div className="relative z-10 flex flex-col items-center">
         <div className="w-20 h-20 border-4 border-lime-glow border-t-transparent rounded-full animate-spin mb-8"></div>
-        <h2 className="text-primary-foreground text-3xl font-display font-bold mb-4">
-          Preparando seu plano, {userData.name || 'visitante'}...
+        <h2 className="text-primary-foreground text-2xl sm:text-3xl font-display font-bold mb-2">
+          {statusText}
         </h2>
+        <p className="text-primary-foreground/60 text-sm mb-6">
+          Estamos analisando suas respostas…
+        </p>
         <div className="w-full max-w-sm bg-white/10 h-3 rounded-full overflow-hidden mb-12">
           <div 
             className="h-full bg-gradient-to-r from-lime to-lime-glow transition-all duration-100" 

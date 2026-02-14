@@ -3,81 +3,85 @@ import { QuizStep } from '@/types/quiz';
 export const quizSteps: QuizStep[] = [
   {
     id: 1,
-    question: "Qual é o seu principal objetivo?",
+    question: "Você sente que emagrecer ficou mais difícil depois dos 30?",
     type: 'select',
     fieldName: 'weightGoal',
     options: [
-      { label: "Perder peso rapidamente", value: "rapid", icon: "🔥" },
-      { label: "Emagrecer de forma saudável", value: "healthy", icon: "🌿" },
-      { label: "Definir o corpo", value: "define", icon: "💪" },
-      { label: "Manter o peso atual", value: "maintain", icon: "⚖️" },
+      { label: "Sim, muito mais difícil", value: "much-harder", icon: "😔" },
+      { label: "Um pouco mais difícil", value: "little-harder", icon: "😕" },
+      { label: "Não sei dizer", value: "unsure", icon: "🤔" },
+      { label: "Não", value: "no", icon: "❌" },
     ]
   },
   {
     id: 2,
-    question: "Qual é a sua faixa etária?",
+    question: "Você já pensou que o problema era falta de disciplina?",
     type: 'select',
-    fieldName: 'age',
+    fieldName: 'satisfaction',
     options: [
-      { label: "18-29 anos", value: "18-29", icon: "🌟" },
-      { label: "30-39 anos", value: "30-39", icon: "✨" },
-      { label: "40-49 anos", value: "40-49", icon: "💫" },
-      { label: "50+ anos", value: "50+", icon: "🌙" },
+      { label: "Sim, já me culpei por isso", value: "blamed-myself", icon: "😞" },
+      { label: "Muitas vezes", value: "many-times", icon: "😔" },
+      { label: "Talvez", value: "maybe", icon: "🤷" },
+      { label: "Não", value: "no", icon: "❌" },
     ]
   },
   {
     id: 3,
-    question: "Como você descreveria seu tipo de corpo atual?",
+    question: "Qual dessas situações mais parece com você hoje?",
     type: 'select',
     fieldName: 'bodyType',
     options: [
-      { label: "Tenho muita gordura acumulada", value: "high-fat", icon: "🔴" },
-      { label: "Tenho gordura moderada", value: "moderate-fat", icon: "🟡" },
-      { label: "Tenho pouca gordura", value: "low-fat", icon: "🟢" },
-      { label: "Estou no peso ideal", value: "ideal", icon: "💚" },
+      { label: "Ganho peso fácil, mesmo comendo pouco", value: "easy-gain", icon: "🍞" },
+      { label: "Me sinto sem energia a maior parte do tempo", value: "no-energy", icon: "😴" },
+      { label: "Emagreci antes, mas agora não consigo mais", value: "plateau", icon: "📉" },
+      { label: "Meu peso oscila constantemente", value: "fluctuates", icon: "⚖️" },
     ]
   },
   {
     id: 4,
-    question: "Qual área do corpo você mais deseja melhorar?",
+    question: "Qual é sua faixa etária?",
     type: 'select',
-    fieldName: 'targetArea',
+    fieldName: 'age',
     options: [
-      { label: "Barriga e abdômen", value: "belly", icon: "🎯" },
-      { label: "Coxas e quadril", value: "thighs", icon: "🦵" },
-      { label: "Braços", value: "arms", icon: "💪" },
-      { label: "Corpo inteiro", value: "full-body", icon: "🧍" },
+      { label: "30–39 anos", value: "30-39", icon: "✨" },
+      { label: "40–49 anos", value: "40-49", icon: "💫" },
+      { label: "50+ anos", value: "50+", icon: "🌙" },
     ]
   },
   {
     id: 5,
-    question: "Qual é o seu nome?",
-    type: 'input',
-    fieldName: 'name',
-    placeholder: "Digite seu nome"
-  },
-  {
-    id: 6,
-    question: "Como o excesso de peso afeta sua vida?",
+    question: "Como isso afeta sua vida hoje?",
     type: 'select',
     fieldName: 'lifeImpact',
     options: [
-      { label: "Baixa autoestima", value: "self-esteem", icon: "😔" },
-      { label: "Problemas de saúde", value: "health", icon: "🏥" },
-      { label: "Falta de energia", value: "energy", icon: "😴" },
-      { label: "Dificuldade com roupas", value: "clothes", icon: "👗" },
+      { label: "Autoestima", value: "self-esteem", icon: "😔" },
+      { label: "Roupas não servem mais", value: "clothes", icon: "👗" },
+      { label: "Cansaço constante", value: "fatigue", icon: "😴" },
+      { label: "Preocupação com saúde", value: "health", icon: "🏥" },
     ]
   },
   {
-    id: 7,
-    question: "O que já tentou para emagrecer?",
+    id: 6,
+    question: "O que você já tentou para emagrecer?",
     type: 'select',
     fieldName: 'obstacle',
     options: [
       { label: "Dietas restritivas", value: "diets", icon: "🥗" },
       { label: "Exercícios intensos", value: "exercise", icon: "🏋️" },
-      { label: "Remédios/Suplementos", value: "supplements", icon: "💊" },
-      { label: "Nunca tentei seriamente", value: "never", icon: "🤷" },
+      { label: "Suplementos", value: "supplements", icon: "💊" },
+      { label: "Já tentei de tudo e nada funciona", value: "everything", icon: "🤷" },
+    ]
+  },
+  {
+    id: 7,
+    question: "Onde você mais acumula gordura?",
+    type: 'select',
+    fieldName: 'targetArea',
+    options: [
+      { label: "Barriga", value: "belly", icon: "🎯" },
+      { label: "Coxas/quadril", value: "thighs", icon: "🦵" },
+      { label: "Braços", value: "arms", icon: "💪" },
+      { label: "Corpo todo", value: "full-body", icon: "🧍" },
     ]
   },
   {
@@ -89,28 +93,28 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: 9,
-    question: "Qual é a sua altura? (cm)",
+    question: "Qual é sua altura? (cm)",
     type: 'number',
     fieldName: 'height',
     placeholder: "Ex: 165"
   },
   {
     id: 10,
-    question: "Qual peso você deseja alcançar? (kg)",
+    question: "Qual peso você gostaria de alcançar? (kg)",
     type: 'number',
     fieldName: 'desiredWeight',
     placeholder: "Ex: 60"
   },
   {
     id: 11,
-    question: "Qual é o seu nível de atividade física?",
+    question: "Qual é seu nível de atividade física?",
     type: 'select',
     fieldName: 'activityLevel',
     options: [
-      { label: "Sedentário(a)", value: "sedentary", icon: "🛋️" },
-      { label: "Levemente ativo(a)", value: "light", icon: "🚶" },
-      { label: "Moderadamente ativo(a)", value: "moderate", icon: "🏃" },
-      { label: "Muito ativo(a)", value: "very-active", icon: "🏅" },
+      { label: "Sedentária", value: "sedentary", icon: "🛋️" },
+      { label: "Levemente ativa", value: "light", icon: "🚶" },
+      { label: "Moderadamente ativa", value: "moderate", icon: "🏃" },
+      { label: "Muito ativa", value: "very-active", icon: "🏅" },
     ]
   },
 ];
