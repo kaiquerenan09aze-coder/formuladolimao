@@ -22,16 +22,13 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
         </div>
 
         {/* Main Headline */}
-        <div className="space-y-4">
+        <div className="space-y-2">
           <h2 className="text-primary-foreground text-2xl md:text-3xl font-display font-bold leading-tight">
-            Se você sente que seu corpo não responde mais como antes…
+            Existe um <span className="text-lime-glow">freio metabólico</span> impedindo seu emagrecimento —
           </h2>
-          <p className="text-primary-foreground/70 text-lg leading-relaxed">
-            mesmo tentando se cuidar…
-          </p>
-          <p className="text-lime-glow text-lg font-bold leading-relaxed">
-            isso pode não ser falta de força de vontade.
-          </p>
+          <h2 className="text-primary-foreground text-2xl md:text-3xl font-display font-bold leading-tight">
+            e você pode <span className="text-lime-glow">destravar</span> isso em minutos.
+          </h2>
         </div>
 
         {/* Subheadline */}
