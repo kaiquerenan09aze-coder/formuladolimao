@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
-import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
@@ -12,6 +12,12 @@ interface LandingPageProps {
 
 const LandingPage = ({ userData }: LandingPageProps) => {
   const [timeLeft, setTimeLeft] = useState(1200);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const testimonials = [
+    { name: "Gabriela Lyra - MG", text: "Eu achava que nunca ia conseguir, mas em 30 dias eu eliminei 7kg só com o truque do limão!", image: testimonial1 },
+    { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade.", image: testimonial2 }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -19,6 +25,20 @@ const LandingPage = ({ userData }: LandingPageProps) => {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide(prev => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide(prev => (prev - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 4000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   const getTimerStyles = () => {
     if (timeLeft < 300) return "bg-destructive animate-pulse"; 
@@ -67,42 +87,23 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <span className="text-[10px] uppercase font-bold opacity-70">Seg</span>
           </div>
         </div>
-        {timeLeft < 300 && (
-          <div className="hidden lg:block bg-card text-destructive px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter animate-bounce">
-            Últimas vagas!
-          </div>
-        )}
       </div>
 
-      {/* Hero Text Section - No specialist image */}
+      {/* Hero */}
       <section className="bg-forest relative overflow-hidden text-primary-foreground pt-10 pb-10 px-4 text-center">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto space-y-6">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold leading-[1.1] tracking-tight">
-            {userData.name ? `${userData.name}, ` : ''}agora que entendemos seu momento…
+          <div className="inline-flex items-center gap-2 bg-lime-glow/15 px-4 py-2 rounded-full border border-lime-glow/20 mb-2">
+            <span className="text-lime-glow text-xs sm:text-sm font-bold uppercase tracking-wider">
+              🎉 Parabéns
+            </span>
+          </div>
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-display font-bold leading-[1.1] tracking-tight uppercase">
+            Seu perfil indica alto potencial de resposta metabólica
           </h1>
-          <p className="text-primary-foreground/80 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-            A <span className="text-lime-glow font-bold">Fórmula do Limão</span> foi desenvolvida para mulheres que:
+          <p className="text-lime-glow font-display font-bold text-base sm:text-lg md:text-xl">
+            "Veja resultados visíveis nas primeiras semanas com um protocolo estruturado."
           </p>
-          <div className="flex flex-col items-center gap-3 mt-6 text-left max-w-md mx-auto">
-            <div className="flex items-center gap-3 w-full">
-              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
-              <span className="text-primary-foreground/90 text-sm sm:text-base">Sentem que o corpo mudou</span>
-            </div>
-            <div className="flex items-center gap-3 w-full">
-              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
-              <span className="text-primary-foreground/90 text-sm sm:text-base">Não querem dietas extremas</span>
-            </div>
-            <div className="flex items-center gap-3 w-full">
-              <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
-              <span className="text-primary-foreground/90 text-sm sm:text-base">Precisam reativar o metabolismo com estratégia</span>
-            </div>
-          </div>
-          <div className="pt-4">
-            <p className="text-lime-glow font-display font-bold text-lg sm:text-xl md:text-2xl">
-              "Veja resultados visíveis nas primeiras semanas com um protocolo estruturado."
-            </p>
-          </div>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
             <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
             <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA</span>
@@ -111,34 +112,66 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-secondary py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-display font-bold text-forest mb-12 uppercase">
+      {/* Testimonials Carousel */}
+      <section className="bg-secondary py-12 sm:py-16 px-4">
+        <div className="max-w-lg mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-forest mb-8 uppercase">
             Histórias reais de transformação!
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { name: "Gabriela Lyra - MG", text: "Eu achava que nunca ia conseguir, mas em 30 dias eu eliminei 7kg só com o truque do limão!", image: testimonial1 },
-              { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade.", image: testimonial2 }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-card p-6 rounded-3xl shadow-card space-y-4">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex text-gold gap-1 text-sm">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gold" />
-                    ))}
+          <div className="relative">
+            <div className="overflow-hidden rounded-3xl">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="min-w-full px-2">
+                    <div className="bg-card p-5 sm:p-6 rounded-3xl shadow-card space-y-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <div className="flex text-gold gap-1 text-sm">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-gold" />
+                          ))}
+                        </div>
+                        <span className="text-muted-foreground text-xs">{testimonial.name}</span>
+                      </div>
+                      <img 
+                        src={testimonial.image} 
+                        alt={`Transformação de ${testimonial.name}`}
+                        className="w-full rounded-xl object-cover"
+                      />
+                      <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
+                    </div>
                   </div>
-                  <span className="text-muted-foreground text-xs">{testimonial.name}</span>
-                </div>
-                <img 
-                  src={testimonial.image} 
-                  alt={`Transformação de ${testimonial.name}`}
-                  className="w-full rounded-xl object-cover"
-                />
-                <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
+                ))}
               </div>
-            ))}
+            </div>
+            {/* Navigation */}
+            <button 
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
+            >
+              <ChevronLeft className="w-4 h-4 text-forest" />
+            </button>
+            <button 
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
+            >
+              <ChevronRight className="w-4 h-4 text-forest" />
+            </button>
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  className={cn(
+                    "w-2.5 h-2.5 rounded-full transition-all",
+                    i === currentSlide ? "bg-primary w-6" : "bg-muted-foreground/30"
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
