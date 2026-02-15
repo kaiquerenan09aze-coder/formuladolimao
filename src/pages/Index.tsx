@@ -51,7 +51,7 @@ const Index = () => {
   }
 
   if (appState === 'analysis') {
-    return <AnalysisComplete onContinue={handleAnalysisComplete} />;
+    return <AnalysisComplete userData={userData} onContinue={handleAnalysisComplete} />;
   }
 
   if (appState === 'result') {

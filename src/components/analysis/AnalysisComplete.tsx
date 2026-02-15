@@ -1,34 +1,21 @@
+import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
-import { Droplet, Flame, Zap, ArrowRight } from 'lucide-react';
-import scheduleImage from '@/assets/schedule-infographic.png';
+import { ArrowRight, Clock, TrendingUp, Flame, Droplets, Zap, Settings } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface AnalysisCompleteProps {
+  userData: UserData;
   onContinue: () => void;
 }
 
-const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
-  const phases = [
-    {
-      icon: Droplet,
-      title: 'Fase 1 – Reequilíbrio',
-      description: 'Eliminação de toxinas e reequilíbrio do organismo para preparar seu corpo',
-      color: 'text-lime-glow',
-      bgColor: 'bg-lime-glow/20',
-    },
-    {
-      icon: Flame,
-      title: 'Fase 2 – Ativação Metabólica',
-      description: 'Ativação do metabolismo para queima acelerada de gordura de forma natural',
-      color: 'text-orange-400',
-      bgColor: 'bg-orange-400/20',
-    },
-    {
-      icon: Zap,
-      title: 'Fase 3 – Estabilização e Energia',
-      description: 'Estabilização do peso e energia renovada durante todo o dia',
-      color: 'text-yellow-300',
-      bgColor: 'bg-yellow-300/20',
-    },
+const AnalysisComplete = ({ userData, onContinue }: AnalysisCompleteProps) => {
+  const benefits = [
+    { icon: Clock, label: '72h', description: 'Início da Ativação' },
+    { icon: TrendingUp, label: '14 dias', description: 'Mudança Visível' },
+    { icon: Flame, label: 'Controle da Fome', description: 'Redução natural do apetite emocional' },
+    { icon: Droplets, label: 'Redução do Inchaço', description: 'Diminuição da retenção líquida' },
+    { icon: Zap, label: 'Energia Estável', description: 'Disposição durante o dia inteiro' },
+    { icon: Settings, label: 'Metabolismo Ativo', description: 'Queima de gordura otimizada' },
   ];
 
   return (
@@ -57,64 +44,34 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
       <div className="relative flex-1 px-4 py-6 overflow-y-auto">
         <div className="max-w-lg mx-auto space-y-8">
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-2 bg-lime-glow/15 px-4 py-2 rounded-full border border-lime-glow/20">
-              <span className="text-lime-glow text-sm font-bold uppercase tracking-wider">
-                ✓ Análise Concluída
-              </span>
-            </div>
-            <h2 className="text-white text-2xl md:text-3xl font-display font-bold leading-tight">
-              Foi por isso que estruturamos um protocolo simples, dividido em <span className="text-lime-glow">3 fases</span>
+            <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-display font-bold leading-tight">
+              A <span className="text-lime-glow">Fórmula do Limão</span> combina ingredientes naturais como limão e outros componentes estratégicos que ajudam a:
             </h2>
           </div>
 
-          {/* 3 Phases */}
-          <div className="relative">
-            <div className="absolute left-8 top-12 bottom-12 w-0.5 bg-gradient-to-b from-lime via-orange-400 to-yellow-300 opacity-50" />
-            <div className="space-y-4">
-              {phases.map((phase, index) => (
-                <div
-                  key={phase.title}
-                  className="relative flex items-start gap-4 card-glow rounded-2xl p-5 hover:border-lime-glow/40 transition-all duration-300"
-                  style={{ animationDelay: `${index * 150}ms` }}
-                >
-                  <div className={`flex-shrink-0 w-16 h-16 ${phase.bgColor} rounded-xl flex items-center justify-center border border-white/5`}>
-                    <phase.icon className={`w-8 h-8 ${phase.color}`} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-white font-display font-bold text-lg mb-1">
-                      {phase.title}
-                    </h3>
-                    <p className="text-white/60 text-sm leading-relaxed">
-                      {phase.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Schedule Image */}
-          <div className="card-glow rounded-2xl p-4">
-            <p className="text-white/50 text-xs text-center uppercase tracking-wider mb-3">
-              Seu cronograma personalizado
-            </p>
-            <img 
-              src={scheduleImage} 
-              alt="Cronograma da Fórmula do Limão"
-              className="w-full rounded-xl"
-            />
-          </div>
-
-          {/* Benefits Summary */}
-          <div className="grid grid-cols-3 gap-3">
+          {/* Checklist */}
+          <div className="space-y-3">
             {[
-              { value: '72h', label: 'Reequilíbrio' },
-              { value: '14 dias', label: 'Resultados' },
-              { value: '3x', label: 'Mais energia' },
-            ].map((stat) => (
-              <div key={stat.label} className="card-glow rounded-xl p-3 text-center">
-                <p className="text-lime-glow font-display font-bold text-xl">{stat.value}</p>
-                <p className="text-white/50 text-xs">{stat.label}</p>
+              'Controle da fome emocional',
+              'Redução do inchaço acumulado',
+              'Estímulo natural da queima de gordura',
+              'Reorganização metabólica progressiva',
+              'Estratégia prática que pode ser aplicada em casa',
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3 card-glow rounded-xl p-4">
+                <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
+                <span className="text-white text-sm sm:text-base font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* 6 Benefits Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {benefits.map((benefit) => (
+              <div key={benefit.label} className="card-glow rounded-xl p-3 text-center space-y-1">
+                <benefit.icon className="w-5 h-5 text-lime-glow mx-auto" />
+                <p className="text-lime-glow font-display font-bold text-sm">{benefit.label}</p>
+                <p className="text-white/50 text-[11px] leading-tight">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -126,7 +83,7 @@ const AnalysisComplete = ({ onContinue }: AnalysisCompleteProps) => {
         <div className="max-w-lg mx-auto">
           <Button
             onClick={onContinue}
-            className="w-full py-6 bg-gradient-to-r from-lime to-lime-glow hover:from-lime-glow hover:to-lime text-forest font-display font-bold text-lg shadow-button animate-pulse-soft uppercase tracking-wide"
+            className="w-full py-6 bg-gradient-to-r from-lime to-lime-glow hover:from-lime-glow hover:to-lime text-forest font-display font-bold text-base sm:text-lg shadow-button animate-pulse-soft uppercase tracking-wide"
           >
             👉 REVELAR MEU PLANO PERSONALIZADO <ArrowRight className="ml-2 w-5 h-5" />
           </Button>

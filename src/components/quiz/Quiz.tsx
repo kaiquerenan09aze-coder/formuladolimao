@@ -4,6 +4,7 @@ import { UserData } from '@/types/quiz';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Lock } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
 
 interface QuizProps {
   onComplete: (data: UserData) => void;
@@ -13,6 +14,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [userData, setUserData] = useState<UserData>({});
   const [inputValue, setInputValue] = useState("");
+  const [sliderValue, setSliderValue] = useState(70);
 
   const step = quizSteps[currentStepIndex];
   const progress = ((currentStepIndex + 1) / quizSteps.length) * 100;
@@ -21,12 +23,20 @@ const Quiz = ({ onComplete }: QuizProps) => {
     const updatedData = { ...userData, [step.fieldName]: value };
     setUserData(updatedData);
     setInputValue("");
+    setSliderValue(step.fieldName === 'height' ? 165 : step.fieldName === 'desiredWeight' ? 60 : 70);
     
     if (currentStepIndex < quizSteps.length - 1) {
       setCurrentStepIndex(prev => prev + 1);
     } else {
       onComplete(updatedData);
     }
+  };
+
+  const isWeightField = step.fieldName === 'currentWeight' || step.fieldName === 'desiredWeight' || step.fieldName === 'height';
+  const getSliderConfig = () => {
+    if (step.fieldName === 'height') return { min: 140, max: 200, default: 165, unit: 'cm' };
+    if (step.fieldName === 'desiredWeight') return { min: 40, max: 150, default: 60, unit: 'kg' };
+    return { min: 40, max: 180, default: 70, unit: 'kg' };
   };
 
   return (
@@ -77,10 +87,50 @@ const Quiz = ({ onComplete }: QuizProps) => {
           </div>
         )}
 
-        {(step.type === 'input' || step.type === 'number') && (
+        {step.type === 'number' && isWeightField && (
+          <div className="space-y-8">
+            {/* Big number display */}
+            <div className="text-center">
+              <span className="text-primary-foreground text-6xl sm:text-7xl font-display font-bold">
+                {sliderValue}
+              </span>
+              <span className="text-primary-foreground/60 text-2xl font-display ml-1">
+                {getSliderConfig().unit}
+              </span>
+            </div>
+
+            {/* Slider ruler */}
+            <div className="px-4">
+              <Slider
+                value={[sliderValue]}
+                onValueChange={(vals) => setSliderValue(vals[0])}
+                min={getSliderConfig().min}
+                max={getSliderConfig().max}
+                step={1}
+                className="[&_[role=slider]]:h-7 [&_[role=slider]]:w-7 [&_[role=slider]]:border-4 [&_[role=slider]]:border-lime [&_[role=slider]]:bg-white [&_[role=slider]]:shadow-button [&_.relative]:h-3 [&_[data-orientation=horizontal]_.absolute]:bg-lime"
+              />
+              <div className="flex justify-between mt-2 text-primary-foreground/40 text-xs font-bold">
+                <span>{getSliderConfig().min}</span>
+                <span>{getSliderConfig().max}</span>
+              </div>
+            </div>
+
+            <Button
+              onClick={() => handleNext(sliderValue)}
+              className={cn(
+                "w-full py-6 gradient-primary text-primary-foreground font-display font-bold text-xl",
+                "shadow-button transition-all uppercase tracking-wide"
+              )}
+            >
+              Continuar
+            </Button>
+          </div>
+        )}
+
+        {step.type === 'number' && !isWeightField && (
           <div className="space-y-6">
             <input 
-              type={step.type === 'number' ? 'number' : 'text'}
+              type="number"
               autoFocus
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -93,7 +143,35 @@ const Quiz = ({ onComplete }: QuizProps) => {
             />
             <Button
               disabled={!inputValue}
-              onClick={() => handleNext(step.type === 'number' ? Number(inputValue) : inputValue)}
+              onClick={() => handleNext(Number(inputValue))}
+              className={cn(
+                "w-full py-6 gradient-primary text-primary-foreground font-display font-bold text-xl",
+                "disabled:opacity-50 disabled:cursor-not-allowed",
+                "shadow-button transition-all uppercase tracking-wide"
+              )}
+            >
+              Continuar
+            </Button>
+          </div>
+        )}
+
+        {step.type === 'input' && (
+          <div className="space-y-6">
+            <input 
+              type="text"
+              autoFocus
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder={step.placeholder}
+              className={cn(
+                "w-full p-5 rounded-2xl text-center text-xl font-bold",
+                "bg-card text-foreground placeholder:text-muted-foreground",
+                "focus:outline-none focus:ring-4 focus:ring-lime/50"
+              )}
+            />
+            <Button
+              disabled={!inputValue}
+              onClick={() => handleNext(inputValue)}
               className={cn(
                 "w-full py-6 gradient-primary text-primary-foreground font-display font-bold text-xl",
                 "disabled:opacity-50 disabled:cursor-not-allowed",
