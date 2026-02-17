@@ -25,8 +25,12 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
 
         {/* Symptom Checklist */}
         <div className="space-y-3 flex flex-col items-center">
-          {symptoms.map((symptom) => (
-            <div key={symptom} className="flex items-center gap-3">
+          {symptoms.map((symptom, index) => (
+            <div
+              key={symptom}
+              className="flex items-center gap-3 animate-fade-in opacity-0"
+              style={{ animationDelay: `${index * 180}ms`, animationFillMode: 'forwards' }}
+            >
               <CheckCircle2 className="w-7 h-7 text-lime-glow flex-shrink-0" fill="currentColor" strokeWidth={0} />
               <span className="text-primary-foreground font-display font-bold text-lg sm:text-xl">
                 {symptom}
