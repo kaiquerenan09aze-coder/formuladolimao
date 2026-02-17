@@ -23,7 +23,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
     const updatedData = { ...userData, [step.fieldName]: value };
     setUserData(updatedData);
     setInputValue("");
-    setSliderValue(step.fieldName === 'height' ? 165 : step.fieldName === 'desiredWeight' ? 60 : 70);
+    setSliderValue(step.fieldName === 'height' ? 165 : step.fieldName === 'desiredWeight' ? 60 : step.fieldName === 'age' ? 30 : 70);
     
     if (currentStepIndex < quizSteps.length - 1) {
       setCurrentStepIndex(prev => prev + 1);
@@ -32,10 +32,11 @@ const Quiz = ({ onComplete }: QuizProps) => {
     }
   };
 
-  const isWeightField = step.fieldName === 'currentWeight' || step.fieldName === 'desiredWeight' || step.fieldName === 'height';
+  const isWeightField = step.fieldName === 'currentWeight' || step.fieldName === 'desiredWeight' || step.fieldName === 'height' || step.fieldName === 'age';
   const getSliderConfig = () => {
     if (step.fieldName === 'height') return { min: 140, max: 200, default: 165, unit: 'cm' };
     if (step.fieldName === 'desiredWeight') return { min: 40, max: 150, default: 60, unit: 'kg' };
+    if (step.fieldName === 'age') return { min: 18, max: 80, default: 30, unit: 'anos' };
     return { min: 40, max: 180, default: 70, unit: 'kg' };
   };
 
