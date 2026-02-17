@@ -95,7 +95,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "progress-fill": "progress-fill 0.6s ease-out forwards",
-        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
+        "bounce-subtle": "bounce-subtle 4s ease-in-out infinite",
       },
     },
   },
