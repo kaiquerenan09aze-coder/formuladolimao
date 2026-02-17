@@ -62,7 +62,7 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
               "text-forest font-display font-bold text-xl uppercase tracking-wide",
               "shadow-button transition-all duration-300",
               "hover:scale-[1.02] active:scale-[0.98]",
-              "animate-bounce-subtle [animation-duration:6s]"
+              "animate-bounce-subtle [animation-duration:5s]"
             )}
           >
             🍋 Quero Entender Meu Corpo
