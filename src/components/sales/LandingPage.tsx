@@ -208,6 +208,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             </div>
             <h3 className="text-2xl font-display font-bold text-forest">Plano Personalizado do Truque do Limão</h3>
             <ul className="space-y-3 text-foreground">
+              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Plano Personalizado do Truque do Limão</li>
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Estratégia Anti-Inchaço</li>
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Ajuste Hormonal Natural</li>
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Ativação Diária do Corpo</li>
