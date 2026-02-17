@@ -133,22 +133,6 @@ const Result = ({ userData, onContinue }: ResultProps) => {
           <p className="text-foreground font-bold text-sm sm:text-base">
             Agora que você sabe onde está, é hora de destravar.
           </p>
-          <div className="space-y-2 text-left pt-2">
-            {[
-              'Plano Personalizado do Truque do Limão',
-              'Estratégia Anti-Inchaço',
-              'Ajuste Hormonal Natural',
-              'Ativação Diária do Corpo',
-              'Diminuição da compulsão por doce',
-              'Apoio ao funcionamento intestinal',
-              'Mais constância no emagrecimento',
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <span className="text-primary font-bold text-base">✓</span>
-                <span className="text-foreground font-bold text-sm">{item}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <Button
