@@ -207,15 +207,6 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               OFERTA ESPECIAL
             </div>
             <h3 className="text-2xl font-display font-bold text-forest">Plano Personalizado do Truque do Limão</h3>
-            <ul className="space-y-3 text-foreground">
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Plano Personalizado do Truque do Limão</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Estratégia Anti-Inchaço</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Ajuste Hormonal Natural</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Ativação Diária do Corpo</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Diminuição da compulsão por doce</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Apoio ao funcionamento intestinal</li>
-              <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Mais constância no emagrecimento</li>
-            </ul>
             <div className="pt-6 border-t border-primary/20 text-center space-y-2">
               <div className="text-muted-foreground line-through text-lg">De R$ 197,00</div>
               <div className="text-muted-foreground text-sm font-bold uppercase tracking-wide">Por apenas:</div>
