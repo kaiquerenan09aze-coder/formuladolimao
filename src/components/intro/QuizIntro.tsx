@@ -1,10 +1,18 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface QuizIntroProps {
   onStart: () => void;
 }
+
+const symptoms = [
+  "Fome descontrolada.",
+  "Intestino preso.",
+  "Inchaço todo dia.",
+  "Cansaço constante.",
+  "Dificuldade para emagrecer.",
+];
 
 const QuizIntro = ({ onStart }: QuizIntroProps) => {
   return (
@@ -14,32 +22,39 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-lime-glow/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="relative z-10 w-full max-w-lg text-center space-y-8 animate-fade-in">
-        {/* Brand */}
-        <div className="mb-12">
-          <h1 className="text-primary-foreground text-2xl font-display font-bold tracking-tight">
-            FÓRMULA DO <span className="text-lime-glow">LIMÃO</span> 🍋
-          </h1>
+
+        {/* Symptom Checklist */}
+        <div className="space-y-3 text-left">
+          {symptoms.map((symptom) => (
+            <div key={symptom} className="flex items-center gap-3">
+              <CheckCircle2 className="w-7 h-7 text-lime-glow flex-shrink-0" fill="currentColor" strokeWidth={0} />
+              <span className="text-primary-foreground font-display font-bold text-lg sm:text-xl">
+                {symptom}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="flex justify-center">
+          <div className="w-10 h-1 bg-lime-glow rounded-full" />
         </div>
 
         {/* Main Headline */}
         <div className="space-y-2">
-          <h2 className="text-primary-foreground text-2xl md:text-3xl font-display font-bold leading-tight">
-            Existe um <span className="text-lime-glow">freio metabólico</span> impedindo seu emagrecimento —
+          <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
+            Seu corpo pode estar
           </h2>
-          <h2 className="text-primary-foreground text-2xl md:text-3xl font-display font-bold leading-tight">
-            e você pode <span className="text-lime-glow">destravar</span> isso em minutos.
+          <h2 className="text-lime-glow text-3xl md:text-4xl font-display font-bold leading-tight">
+            em outro ritmo.
           </h2>
-        </div>
-
-        {/* Subheadline */}
-        <div className="space-y-3">
-          <p className="text-primary-foreground/70 text-lg leading-relaxed">
-            Descubra em 2 minutos o que pode estar travando seu metabolismo hoje.
+          <p className="text-primary-foreground/80 text-base mt-2">
+            Descubra o que está travando hoje.
           </p>
         </div>
 
         {/* CTA Button */}
-        <div className="pt-6">
+        <div className="pt-2">
           <Button
             onClick={onStart}
             className={cn(
@@ -50,7 +65,7 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
               "hover:scale-[1.02] active:scale-[0.98]"
             )}
           >
-            👉 Quero Entender Meu Corpo
+            🍋 Quero Entender Meu Corpo
             <ArrowRight className="ml-2 w-6 h-6" />
           </Button>
           {/* Trust badge - below button */}
