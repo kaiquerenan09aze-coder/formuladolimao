@@ -5,6 +5,8 @@ import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck, ChevronLeft, Chevron
 import { cn } from '@/lib/utils';
 import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
+import testimonial3 from '@/assets/testimonial-3.jpeg';
+import testimonial4 from '@/assets/testimonial-4.jpeg';
 
 interface LandingPageProps {
   userData: UserData;
@@ -16,7 +18,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
 
   const testimonials = [
     { name: "Gabriela Lyra - MG", text: "Eu achava que nunca ia conseguir, mas em 30 dias eu eliminei 7kg só com o truque do limão!", image: testimonial1 },
-    { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade.", image: testimonial2 }
+    { name: "Lorena Dias - SP", text: "Em 30 dias eu eliminei 10kg! A fórmula funciona de verdade.", image: testimonial2 },
+    { name: "Camila Souza - RJ", text: "Resultado incrível! Meu corpo mudou completamente em poucas semanas.", image: testimonial3 },
+    { name: "Fernanda Lima - PR", text: "Eu não acreditava, mas os resultados apareceram rápido. Recomendo demais!", image: testimonial4 }
   ];
 
   useEffect(() => {
@@ -211,7 +215,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Método Corpo em Ação</li>
             </ul>
             <div className="pt-6 border-t border-primary/20 text-center space-y-2">
-              <div className="text-muted-foreground line-through text-lg">De R$ 397,00</div>
+              <div className="text-muted-foreground line-through text-lg">De R$ 197,00</div>
               <div className="text-muted-foreground text-sm font-bold uppercase tracking-wide">Por apenas:</div>
               <div className="text-primary text-xl sm:text-2xl font-display font-bold">
                 5x de <span className="text-4xl sm:text-5xl md:text-6xl">R$ 5,58</span>
