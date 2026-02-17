@@ -22,12 +22,12 @@ const Result = ({ userData, onContinue }: ResultProps) => {
 
   // Calculate metabolism percentage based on age and activity level
   const getMetabolismPercent = () => {
-    const age = userData.age;
+    const age = Number(userData.age) || 35;
     const activity = userData.activityLevel;
     let base = 40;
-    if (age === '50+') base = 22;
-    else if (age === '40-49') base = 30;
-    else if (age === '30-39') base = 38;
+    if (age >= 50) base = 22;
+    else if (age >= 40) base = 30;
+    else if (age >= 30) base = 38;
     if (activity === 'very-active') base += 15;
     else if (activity === 'moderate') base += 10;
     else if (activity === 'light') base += 5;
@@ -45,11 +45,9 @@ const Result = ({ userData, onContinue }: ResultProps) => {
   };
 
   const getAgeLabel = () => {
-    const age = userData.age;
-    if (age === '30-39') return '30–39';
-    if (age === '40-49') return '40–49';
-    if (age === '50+') return '50+';
-    return '';
+    const age = Number(userData.age);
+    if (!age) return '';
+    return `${age}`;
   };
 
   return (
@@ -72,7 +70,7 @@ const Result = ({ userData, onContinue }: ResultProps) => {
             {userData.name ? `${userData.name}, a` : 'A'}nalisando suas respostas, vimos que hoje você está com{' '}
             <span className="text-primary">{userData.currentWeight || 70}kg</span>
             {getAgeLabel() && (
-              <> aos <span className="text-primary">{getAgeLabel()} anos</span></>
+              <> e tem <span className="text-primary">{getAgeLabel()} anos</span></>
             )}.
           </h2>
         </div>
@@ -130,11 +128,27 @@ const Result = ({ userData, onContinue }: ResultProps) => {
         {/* Solution Block */}
         <div className="bg-primary/15 border-2 border-primary/30 rounded-3xl p-6 text-center space-y-3">
           <p className="text-primary font-display font-bold text-lg sm:text-xl">
-            Mas isso tem solução.
+            Agora que você sabe onde está,
           </p>
-          <p className="text-foreground font-bold text-sm">
-            Você precisa ativar o <span className="text-primary">Protocolo de Reativação Metabólica Feminina</span>:
+          <p className="text-primary font-display font-bold text-lg sm:text-xl">
+            é hora de destravar.
           </p>
+          <div className="space-y-2 text-left pt-2">
+            {[
+              'Plano Personalizado do Truque do Limão',
+              'Estratégia Anti-Inchaço',
+              'Ajuste Hormonal Natural',
+              'Ativação Diária do Corpo',
+              'Diminuição da compulsão por doce',
+              'Apoio ao funcionamento intestinal',
+              'Mais constância no emagrecimento',
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <span className="text-primary font-bold text-base">✓</span>
+                <span className="text-foreground font-bold text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <Button

@@ -3,13 +3,13 @@ import { QuizStep } from '@/types/quiz';
 export const quizSteps: QuizStep[] = [
   {
     id: 1,
-    question: "Você sente que emagrecer ficou mais difícil depois dos 30?",
+    question: "Você sente que seu corpo parou de responder mesmo fazendo dieta?",
     type: 'select',
     fieldName: 'weightGoal',
     options: [
-      { label: "Sim, muito mais difícil", value: "much-harder", icon: "😔" },
-      { label: "Um pouco mais difícil", value: "little-harder", icon: "😕" },
-      { label: "Não sei dizer", value: "unsure", icon: "🤔" },
+      { label: "Sim, nada funciona mais", value: "much-harder", icon: "😩" },
+      { label: "Responde bem pouco", value: "little-harder", icon: "😕" },
+      { label: "Não tenho certeza", value: "unsure", icon: "🤔" },
       { label: "Não", value: "no", icon: "❌" },
     ]
   },
@@ -39,14 +39,10 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: 4,
-    question: "Qual é sua faixa etária?",
-    type: 'select',
+    question: "Qual é sua idade?",
+    type: 'number',
     fieldName: 'age',
-    options: [
-      { label: "30–39 anos", value: "30-39", icon: "✨" },
-      { label: "40–49 anos", value: "40-49", icon: "💫" },
-      { label: "50+ anos", value: "50+", icon: "🌙" },
-    ]
+    placeholder: "Ex: 35"
   },
   {
     id: 5,
