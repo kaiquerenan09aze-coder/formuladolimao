@@ -60,8 +60,9 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
               "w-full py-7 px-8 rounded-2xl",
               "bg-gradient-to-r from-lime to-lime-glow",
               "text-forest font-display font-bold text-xl uppercase tracking-wide",
-              "shadow-button hover:shadow-glow transition-all duration-300",
-              "hover:scale-[1.02] active:scale-[0.98]"
+              "shadow-button transition-all duration-300",
+              "hover:scale-[1.02] active:scale-[0.98]",
+              "animate-[pulse_1.8s_cubic-bezier(0.4,0,0.6,1)_infinite]"
             )}
           >
             🍋 Quero Entender Meu Corpo
