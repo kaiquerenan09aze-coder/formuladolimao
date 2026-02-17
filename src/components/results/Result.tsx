@@ -127,11 +127,11 @@ const Result = ({ userData, onContinue }: ResultProps) => {
 
         {/* Solution Block */}
         <div className="bg-primary/15 border-2 border-primary/30 rounded-3xl p-6 text-center space-y-3">
-          <p className="text-primary font-display font-bold text-lg sm:text-xl">
-            Agora que você sabe onde está,
+          <p className="text-primary font-display font-bold text-xl sm:text-2xl">
+            Mas isso tem solução.
           </p>
-          <p className="text-primary font-display font-bold text-lg sm:text-xl">
-            é hora de destravar.
+          <p className="text-foreground font-bold text-sm sm:text-base">
+            Agora que você sabe onde está, é hora de destravar.
           </p>
           <div className="space-y-2 text-left pt-2">
             {[
