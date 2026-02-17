@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { UserData } from '@/types/quiz';
 import { Button } from '@/components/ui/button';
-import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Star, Lock, Flame, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight, Clock, TrendingUp, Droplets, Zap, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
@@ -232,40 +232,46 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Comparison */}
+      {/* Benefits & Timeline */}
       <section className="bg-forest relative overflow-hidden text-primary-foreground py-12 sm:py-16 px-4">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
-        <div className="relative max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold mb-8 sm:mb-12 text-center uppercase">
-            POR QUE SOMOS DIFERENTES?
+        <div className="relative max-w-lg mx-auto space-y-8">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold leading-tight text-center">
+            A <span className="text-lime-glow">Fórmula do Limão</span> combina ingredientes naturais como limão e outros componentes estratégicos que ajudam a:
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-primary-foreground/10">
-                  <th className="py-4 font-bold text-primary-foreground/50 uppercase text-xs">Alternativa</th>
-                  <th className="py-4 font-bold text-primary-foreground/50 uppercase text-xs">Custo Estimado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-primary-foreground/5">
-                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Medicamentos de Farmácia</td>
-                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 3.000,00</td>
-                </tr>
-                <tr className="border-b border-primary-foreground/5">
-                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Nutricionista</td>
-                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 500,00 / mês</td>
-                </tr>
-                <tr className="border-b border-primary-foreground/5">
-                  <td className="py-4 sm:py-5 text-sm sm:text-lg">Academia + Personal</td>
-                  <td className="py-4 sm:py-5 font-bold text-destructive text-sm sm:text-base">R$ 1.300,00 / mês</td>
-                </tr>
-                <tr className="bg-lime-glow/15 rounded-xl">
-                  <td className="py-4 sm:py-5 px-3 sm:px-4 text-base sm:text-xl font-display font-bold text-lime-glow">🍋 Fórmula do Limão</td>
-                  <td className="py-4 sm:py-5 px-3 sm:px-4 text-xl sm:text-2xl font-display font-bold text-lime-glow">R$ 27,90</td>
-                </tr>
-              </tbody>
-            </table>
+
+          {/* Checklist */}
+          <div className="space-y-3">
+            {[
+              'Controle da fome emocional',
+              'Redução do inchaço acumulado',
+              'Estímulo natural da queima de gordura',
+              'Reorganização metabólica progressiva',
+              'Estratégia prática que pode ser aplicada em casa',
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-4">
+                <Check className="w-5 h-5 text-lime-glow flex-shrink-0" />
+                <span className="text-primary-foreground text-sm sm:text-base font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* 6 Benefits Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {[
+              { icon: Clock, label: '72h', description: 'Início da Ativação' },
+              { icon: TrendingUp, label: '14 dias', description: 'Mudança Visível' },
+              { icon: Flame, label: 'Controle da Fome', description: 'Redução natural do apetite emocional' },
+              { icon: Droplets, label: 'Redução do Inchaço', description: 'Diminuição da retenção líquida' },
+              { icon: Zap, label: 'Energia Estável', description: 'Disposição durante o dia inteiro' },
+              { icon: Settings, label: 'Metabolismo Ativo', description: 'Queima de gordura otimizada' },
+            ].map((benefit) => (
+              <div key={benefit.label} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center space-y-1">
+                <benefit.icon className="w-5 h-5 text-lime-glow mx-auto" />
+                <p className="text-lime-glow font-display font-bold text-sm">{benefit.label}</p>
+                <p className="text-primary-foreground/50 text-[11px] leading-tight">{benefit.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
