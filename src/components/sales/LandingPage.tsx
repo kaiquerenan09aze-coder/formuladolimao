@@ -206,7 +206,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <div className="gradient-primary text-primary-foreground font-bold text-xs px-4 py-1 rounded-full w-fit uppercase mb-4">
               OFERTA ESPECIAL
             </div>
-            <h3 className="text-2xl font-display font-bold text-forest">Plano Completo + Bônus Exclusivos</h3>
+            <h3 className="text-2xl font-display font-bold text-forest">Plano Personalizado do Truque do Limão</h3>
             <ul className="space-y-3 text-foreground">
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Plano Personalizado do Truque do Limão</li>
               <li className="flex items-center gap-3"><Check className="w-5 h-5 text-primary" /> Estratégia Anti-Inchaço</li>
