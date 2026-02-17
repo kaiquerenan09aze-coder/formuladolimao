@@ -24,7 +24,7 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
       <div className="relative z-10 w-full max-w-lg text-center space-y-8 animate-fade-in">
 
         {/* Symptom Checklist */}
-        <div className="space-y-3 text-left">
+        <div className="space-y-3 flex flex-col items-center">
           {symptoms.map((symptom) => (
             <div key={symptom} className="flex items-center gap-3">
               <CheckCircle2 className="w-7 h-7 text-lime-glow flex-shrink-0" fill="currentColor" strokeWidth={0} />
@@ -33,11 +33,6 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
               </span>
             </div>
           ))}
-        </div>
-
-        {/* Divider */}
-        <div className="flex justify-center">
-          <div className="w-10 h-1 bg-lime-glow rounded-full" />
         </div>
 
         {/* Main Headline */}
