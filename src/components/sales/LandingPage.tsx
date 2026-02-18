@@ -189,9 +189,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <div className="rounded-3xl overflow-hidden shadow-card bg-card">
                 <video
                   autoPlay
-                  muted
                   loop
                   playsInline
+                  controls
                   src={formulaVideo}
                   className="w-full rounded-3xl"
                   preload="auto"
