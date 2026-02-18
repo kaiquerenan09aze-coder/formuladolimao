@@ -7,7 +7,7 @@ import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
 import testimonial3 from '@/assets/testimonial-3.jpeg';
 import testimonial4 from '@/assets/testimonial-4.jpeg';
-import formulaVideo from '@/assets/formula-video.mov';
+import formulaVideo from '@/assets/formula-video.mp4';
 
 interface LandingPageProps {
   userData: UserData;
@@ -192,12 +192,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
                   muted
                   loop
                   playsInline
+                  src={formulaVideo}
                   className="w-full rounded-3xl"
                   preload="auto"
-                >
-                  <source src={formulaVideo} type="video/mp4" />
-                  <source src={formulaVideo} type="video/quicktime" />
-                </video>
+                />
               </div>
               <a
                 href={CHECKOUT_URL}
