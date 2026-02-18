@@ -188,14 +188,17 @@ const LandingPage = ({ userData }: LandingPageProps) => {
             <div className="w-full md:w-1/2 flex flex-col gap-4">
               <div className="rounded-3xl overflow-hidden shadow-card bg-card">
                 <video
-                  src={formulaVideo}
                   controls
                   playsInline
                   className="w-full rounded-3xl"
-                  poster=""
-                />
+                  preload="metadata"
+                >
+                  <source src={formulaVideo} type="video/mp4" />
+                  <source src={formulaVideo} type="video/quicktime" />
+                  Seu navegador não suporta vídeo.
+                </video>
               </div>
-              <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-base uppercase shadow-button flex items-center justify-center text-center">
+              <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-base uppercase shadow-button">
                 <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full">
                   Saiba mais sobre a fórmula do limão <ArrowRight className="w-5 h-5 flex-shrink-0" />
                 </a>
