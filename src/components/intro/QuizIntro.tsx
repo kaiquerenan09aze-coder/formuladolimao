@@ -42,13 +42,13 @@ const QuizIntro = ({ onStart }: QuizIntroProps) => {
         {/* Main Headline */}
         <div className="space-y-2">
           <h2 className="text-primary-foreground text-3xl md:text-4xl font-display font-bold leading-tight">
-            Seu corpo pode estar
+            Seu emagrecimento pode estar
           </h2>
           <h2 className="text-lime-glow text-3xl md:text-4xl font-display font-bold leading-tight">
-            em outro ritmo.
+            travado.
           </h2>
           <p className="text-primary-foreground/80 text-base mt-2">
-            Descubra o que está travando hoje.
+            Mas sua transformação pode começar agora.
           </p>
         </div>
 

@@ -7,10 +7,13 @@ import testimonial1 from '@/assets/testimonial-1.jpeg';
 import testimonial2 from '@/assets/testimonial-2.jpeg';
 import testimonial3 from '@/assets/testimonial-3.jpeg';
 import testimonial4 from '@/assets/testimonial-4.jpeg';
+import formulaVideo from '@/assets/formula-video.mov';
 
 interface LandingPageProps {
   userData: UserData;
 }
+
+const CHECKOUT_URL = "https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025";
 
 const LandingPage = ({ userData }: LandingPageProps) => {
   const [timeLeft, setTimeLeft] = useState(1200);
@@ -116,66 +119,89 @@ const LandingPage = ({ userData }: LandingPageProps) => {
         </div>
       </section>
 
-      {/* Testimonials Carousel */}
+      {/* Testimonials Carousel + Video */}
       <section className="bg-secondary py-12 sm:py-16 px-4">
-        <div className="max-w-lg mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-forest mb-8 uppercase">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-forest mb-8 uppercase text-center">
             Histórias reais de transformação!
           </h2>
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl">
-              <div 
-                className="flex transition-transform duration-500 ease-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="min-w-full px-2">
-                    <div className="bg-card p-5 sm:p-6 rounded-3xl shadow-card space-y-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex text-gold gap-1 text-sm">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-gold" />
-                          ))}
+          <div className="flex flex-col md:flex-row gap-8 items-start justify-center">
+
+            {/* Carousel */}
+            <div className="w-full md:w-1/2 relative">
+              <div className="overflow-hidden rounded-3xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="min-w-full px-2">
+                      <div className="bg-card p-5 sm:p-6 rounded-3xl shadow-card space-y-4">
+                        <div className="flex justify-between items-center mb-2">
+                          <div className="flex text-gold gap-1 text-sm">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-gold" />
+                            ))}
+                          </div>
+                          <span className="text-muted-foreground text-xs">{testimonial.name}</span>
                         </div>
-                        <span className="text-muted-foreground text-xs">{testimonial.name}</span>
+                        <img 
+                          src={testimonial.image} 
+                          alt={`Transformação de ${testimonial.name}`}
+                          className="w-full rounded-xl object-cover"
+                        />
+                        <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
                       </div>
-                      <img 
-                        src={testimonial.image} 
-                        alt={`Transformação de ${testimonial.name}`}
-                        className="w-full rounded-xl object-cover"
-                      />
-                      <p className="text-muted-foreground text-sm italic">"{testimonial.text}"</p>
                     </div>
-                  </div>
+                  ))}
+                </div>
+              </div>
+              {/* Navigation */}
+              <button 
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
+              >
+                <ChevronLeft className="w-4 h-4 text-forest" />
+              </button>
+              <button 
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
+              >
+                <ChevronRight className="w-4 h-4 text-forest" />
+              </button>
+              {/* Dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentSlide(i)}
+                    className={cn(
+                      "w-2.5 h-2.5 rounded-full transition-all",
+                      i === currentSlide ? "bg-primary w-6" : "bg-muted-foreground/30"
+                    )}
+                  />
                 ))}
               </div>
             </div>
-            {/* Navigation */}
-            <button 
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
-            >
-              <ChevronLeft className="w-4 h-4 text-forest" />
-            </button>
-            <button 
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-8 h-8 bg-card rounded-full shadow-card flex items-center justify-center z-10"
-            >
-              <ChevronRight className="w-4 h-4 text-forest" />
-            </button>
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-4">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i)}
-                  className={cn(
-                    "w-2.5 h-2.5 rounded-full transition-all",
-                    i === currentSlide ? "bg-primary w-6" : "bg-muted-foreground/30"
-                  )}
+
+            {/* Video + CTA */}
+            <div className="w-full md:w-1/2 flex flex-col gap-4">
+              <div className="rounded-3xl overflow-hidden shadow-card bg-card">
+                <video
+                  src={formulaVideo}
+                  controls
+                  playsInline
+                  className="w-full rounded-3xl"
+                  poster=""
                 />
-              ))}
+              </div>
+              <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
+                <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+                  Saiba mais sobre a fórmula do limão <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
             </div>
+
           </div>
         </div>
       </section>
@@ -226,7 +252,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               </div>
             </div>
             <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
-              <a href="https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025" target="_blank" rel="noopener noreferrer">
+              <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
                 Quero Começar Agora! <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
@@ -296,7 +322,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       {/* Footer CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-card/80 backdrop-blur-md border-t border-border md:hidden z-40">
         <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button animate-pulse-soft">
-          <a href="https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025" target="_blank" rel="noopener noreferrer">
+          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
             Garantir minha vaga agora! <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </Button>
