@@ -19,7 +19,6 @@ const Quiz = ({ onComplete }: QuizProps) => {
   // Bio step state
   const [bioAge, setBioAge] = useState(35);
   const [bioWeight, setBioWeight] = useState(75);
-  const [bioHeight, setBioHeight] = useState(165);
 
   const step = quizSteps[currentStepIndex];
   const progress = ((currentStepIndex + 1) / quizSteps.length) * 100;
@@ -28,7 +27,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
     const updatedData = { ...userData, [step.fieldName]: value };
     setUserData(updatedData);
     setInputValue("");
-    setSliderValue(step.fieldName === 'height' ? 165 : step.fieldName === 'desiredWeight' ? 60 : 70);
+    setSliderValue(step.fieldName === 'desiredWeight' ? 60 : 70);
     
     if (currentStepIndex < quizSteps.length - 1) {
       setCurrentStepIndex(prev => prev + 1);
@@ -42,7 +41,6 @@ const Quiz = ({ onComplete }: QuizProps) => {
       ...userData,
       age: bioAge,
       currentWeight: bioWeight,
-      height: bioHeight,
     };
     setUserData(updatedData);
 
@@ -147,28 +145,6 @@ const Quiz = ({ onComplete }: QuizProps) => {
               <div className="flex justify-between mt-1 text-muted-foreground text-xs">
                 <span>40</span>
                 <span>180</span>
-              </div>
-            </div>
-
-            {/* Altura */}
-            <div className="bg-card rounded-2xl p-5 border-b-4 border-border">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-foreground font-bold text-base">📏 Altura</span>
-                <span className="text-primary font-display font-bold text-2xl">
-                  {bioHeight} <span className="text-muted-foreground text-sm font-normal">cm</span>
-                </span>
-              </div>
-              <Slider
-                value={[bioHeight]}
-                onValueChange={(vals) => setBioHeight(vals[0])}
-                min={140}
-                max={200}
-                step={1}
-                className="[&_[role=slider]]:h-6 [&_[role=slider]]:w-6 [&_[role=slider]]:border-4 [&_[role=slider]]:border-lime [&_[role=slider]]:bg-white [&_[role=slider]]:shadow-button [&_.relative]:h-2 [&_[data-orientation=horizontal]_.absolute]:bg-lime"
-              />
-              <div className="flex justify-between mt-1 text-muted-foreground text-xs">
-                <span>140</span>
-                <span>200</span>
               </div>
             </div>
 
