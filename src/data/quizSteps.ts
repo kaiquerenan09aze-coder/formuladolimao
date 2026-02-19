@@ -3,26 +3,20 @@ import { QuizStep } from '@/types/quiz';
 export const quizSteps: QuizStep[] = [
   {
     id: 1,
-    question: "Você sente que seu corpo parou de responder mesmo fazendo dieta?",
-    type: 'select',
-    fieldName: 'weightGoal',
-    options: [
-      { label: "Sim, nada funciona mais", value: "much-harder", icon: "😩" },
-      { label: "Responde bem pouco", value: "little-harder", icon: "😕" },
-      { label: "Não tenho certeza", value: "unsure", icon: "🤔" },
-      { label: "Não", value: "no", icon: "❌" },
-    ]
+    question: "Conte um pouco sobre você",
+    type: 'bio',
+    fieldName: 'age',
   },
   {
     id: 2,
-    question: "Você já pensou que o problema era falta de disciplina?",
+    question: "Onde você mais acumula gordura?",
     type: 'select',
-    fieldName: 'satisfaction',
+    fieldName: 'targetArea',
     options: [
-      { label: "Sim, já me culpei por isso", value: "blamed-myself", icon: "😞" },
-      { label: "Muitas vezes", value: "many-times", icon: "😔" },
-      { label: "Talvez", value: "maybe", icon: "🤷" },
-      { label: "Não", value: "no", icon: "❌" },
+      { label: "Barriga", value: "belly", icon: "🎯" },
+      { label: "Coxas/quadril", value: "thighs", icon: "🦵" },
+      { label: "Braços", value: "arms", icon: "💪" },
+      { label: "Corpo todo", value: "full-body", icon: "🧍" },
     ]
   },
   {
@@ -63,31 +57,13 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: 6,
-    question: "Onde você mais acumula gordura?",
-    type: 'select',
-    fieldName: 'targetArea',
-    options: [
-      { label: "Barriga", value: "belly", icon: "🎯" },
-      { label: "Coxas/quadril", value: "thighs", icon: "🦵" },
-      { label: "Braços", value: "arms", icon: "💪" },
-      { label: "Corpo todo", value: "full-body", icon: "🧍" },
-    ]
-  },
-  {
-    id: 7,
-    question: "Conte um pouco sobre você",
-    type: 'bio',
-    fieldName: 'age', // fieldName usado como placeholder, os dados reais são coletados no componente
-  },
-  {
-    id: 8,
     question: "Qual peso você gostaria de alcançar? (kg)",
     type: 'number',
     fieldName: 'desiredWeight',
     placeholder: "Ex: 60"
   },
   {
-    id: 9,
+    id: 7,
     question: "Qual é seu nível de atividade física?",
     type: 'select',
     fieldName: 'activityLevel',
