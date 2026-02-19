@@ -3,6 +3,13 @@ import { QuizStep } from '@/types/quiz';
 export const quizSteps: QuizStep[] = [
   {
     id: 1,
+    question: "Qual é o seu nome?",
+    type: 'input',
+    fieldName: 'name',
+    placeholder: "Digite seu primeiro nome"
+  },
+  {
+    id: 2,
     question: "Você sente que seu corpo parou de responder mesmo fazendo dieta?",
     type: 'select',
     fieldName: 'weightGoal',
@@ -14,7 +21,7 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     question: "Você já pensou que o problema era falta de disciplina?",
     type: 'select',
     fieldName: 'satisfaction',

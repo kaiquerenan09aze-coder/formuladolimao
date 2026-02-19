@@ -77,7 +77,9 @@ const Quiz = ({ onComplete }: QuizProps) => {
 
       <div className="w-full max-w-lg animate-fade-in flex-1">
         <h2 className="text-primary-foreground text-2xl md:text-3xl font-display font-bold text-center mb-8">
-          {step.question}
+          {step.type === 'bio' && userData.name
+            ? `Ótimo, ${userData.name}! Agora me conta um pouco mais sobre você 💚`
+            : step.question}
         </h2>
 
         {step.type === 'select' && (
@@ -224,11 +226,17 @@ const Quiz = ({ onComplete }: QuizProps) => {
 
         {step.type === 'input' && (
           <div className="space-y-6">
+            {step.fieldName === 'name' && (
+              <p className="text-primary-foreground/60 text-center text-base -mt-4">
+                Vamos personalizar seu plano especialmente para você ✨
+              </p>
+            )}
             <input 
               type="text"
               autoFocus
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && inputValue && handleNext(inputValue)}
               placeholder={step.placeholder}
               className={cn(
                 "w-full p-5 rounded-2xl text-center text-xl font-bold",
@@ -245,7 +253,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
                 "shadow-button transition-all uppercase tracking-wide"
               )}
             >
-              Continuar
+              {step.fieldName === 'name' ? '✨ Começar meu quiz' : 'Continuar'}
             </Button>
           </div>
         )}
