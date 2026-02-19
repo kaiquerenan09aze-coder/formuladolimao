@@ -13,7 +13,7 @@ interface LandingPageProps {
   userData: UserData;
 }
 
-const CHECKOUT_URL = "https://pay.kirvano.com/dde02282-b271-4865-ba52-5480a1106025";
+const CHECKOUT_URL = "https://go.perfectpay.com.br/PPU38CQ76TN";
 
 const LandingPage = ({ userData }: LandingPageProps) => {
   const [timeLeft, setTimeLeft] = useState(1200);
