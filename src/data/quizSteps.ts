@@ -39,13 +39,6 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: 4,
-    question: "Qual é sua idade?",
-    type: 'number',
-    fieldName: 'age',
-    placeholder: "Ex: 35"
-  },
-  {
-    id: 5,
     question: "Como isso afeta sua vida hoje?",
     type: 'select',
     fieldName: 'lifeImpact',
@@ -57,7 +50,7 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
-    id: 6,
+    id: 5,
     question: "O que você já tentou para emagrecer?",
     type: 'select',
     fieldName: 'obstacle',
@@ -69,7 +62,7 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
-    id: 7,
+    id: 6,
     question: "Onde você mais acumula gordura?",
     type: 'select',
     fieldName: 'targetArea',
@@ -81,28 +74,20 @@ export const quizSteps: QuizStep[] = [
     ]
   },
   {
+    id: 7,
+    question: "Conte um pouco sobre você",
+    type: 'bio',
+    fieldName: 'age', // fieldName usado como placeholder, os dados reais são coletados no componente
+  },
+  {
     id: 8,
-    question: "Qual é o seu peso atual? (kg)",
-    type: 'number',
-    fieldName: 'currentWeight',
-    placeholder: "Ex: 75"
-  },
-  {
-    id: 9,
-    question: "Qual é sua altura? (cm)",
-    type: 'number',
-    fieldName: 'height',
-    placeholder: "Ex: 165"
-  },
-  {
-    id: 10,
     question: "Qual peso você gostaria de alcançar? (kg)",
     type: 'number',
     fieldName: 'desiredWeight',
     placeholder: "Ex: 60"
   },
   {
-    id: 11,
+    id: 9,
     question: "Qual é seu nível de atividade física?",
     type: 'select',
     fieldName: 'activityLevel',
