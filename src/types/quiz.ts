@@ -1,7 +1,7 @@
- export type AppState = 'intro' | 'quiz' | 'calculating' | 'analysis' | 'result' | 'sales_page';
+export type AppState = 'intro' | 'quiz' | 'calculating' | 'analysis' | 'result' | 'sales_page';
 
 export interface UserData {
-  age?: string;
+  age?: number;
   weightGoal?: string;
   bodyType?: string;
   targetArea?: string;
@@ -21,7 +21,7 @@ export interface QuizStep {
   id: number;
   question: string;
   options?: { label: string; value: string; icon?: string }[];
-  type: 'select' | 'input' | 'number' | 'image-grid';
+  type: 'select' | 'input' | 'number' | 'image-grid' | 'bio';
   placeholder?: string;
   fieldName: keyof UserData;
 }
