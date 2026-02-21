@@ -21,7 +21,7 @@ export interface QuizStep {
   id: number;
   question: string;
   options?: { label: string; value: string; icon?: string }[];
-  type: 'select' | 'input' | 'number' | 'image-grid' | 'bio';
+  type: 'select' | 'multi-select' | 'input' | 'number' | 'image-grid' | 'bio';
   placeholder?: string;
   fieldName: keyof UserData;
 }
