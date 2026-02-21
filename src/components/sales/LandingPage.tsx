@@ -238,10 +238,10 @@ const LandingPage = ({ userData }: LandingPageProps) => {
               <div className="text-muted-foreground line-through text-lg">De R$ 197,00</div>
               <div className="text-muted-foreground text-sm font-bold uppercase tracking-wide">Por apenas:</div>
               <div className="text-primary text-xl sm:text-2xl font-display font-bold">
-                5x de <span className="text-4xl sm:text-5xl md:text-6xl">R$ 5,58</span>
+                5x de <span className="text-4xl sm:text-5xl md:text-6xl">R$ 3,58</span>
               </div>
               <div className="text-muted-foreground text-base">
-                ou <span className="text-primary font-bold text-lg">R$ 27,90</span> à vista
+                ou <span className="text-primary font-bold text-lg">R$ 17,90</span> à vista
               </div>
             </div>
             <Button asChild className="w-full py-6 gradient-primary text-primary-foreground font-bold text-lg uppercase shadow-button">
