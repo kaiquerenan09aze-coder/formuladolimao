@@ -100,22 +100,9 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       <section className="bg-forest relative overflow-hidden text-primary-foreground pt-10 pb-10 px-4 text-center">
         <div className="absolute inset-0 gradient-forest pointer-events-none" />
         <div className="relative max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 bg-lime-glow/15 px-4 py-2 rounded-full border border-lime-glow/20 mb-2">
-            <span className="text-lime-glow text-xs sm:text-sm font-bold uppercase tracking-wider">
-              🎉 Parabéns
-            </span>
-          </div>
           <h1 className="text-xl sm:text-2xl md:text-4xl font-display font-bold leading-[1.1] tracking-tight uppercase">
-            Seu perfil indica alto potencial de resposta metabólica
+            Seu perfil mostrou sinais claros. Agora é hora de ativar.
           </h1>
-          <p className="text-lime-glow font-display font-bold text-base sm:text-lg md:text-xl">
-            "Veja resultados visíveis nas primeiras semanas com um protocolo estruturado."
-          </p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
-            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">🔥 REDUZ A FOME</span>
-            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">💪 SECA GORDURA</span>
-            <span className="bg-lime-glow/15 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border border-lime-glow/25">⚡ ATIVA METABOLISMO</span>
-          </div>
         </div>
       </section>
 
@@ -215,7 +202,7 @@ const LandingPage = ({ userData }: LandingPageProps) => {
       {/* Trust + Pricing */}
       <section className="py-12 sm:py-20 px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-center text-forest text-2xl sm:text-3xl font-display font-bold mb-4">GARANTA SEU ACESSO AGORA</h2>
+          <h2 className="text-center text-forest text-2xl sm:text-3xl font-display font-bold mb-4">Seu perfil mostrou sinais claros. Agora é hora de ativar.</h2>
           <p className="text-center text-muted-foreground mb-8 sm:mb-12 text-base sm:text-lg">Junte-se a milhares de mulheres que já transformaram seus corpos</p>
 
           {/* Trust Badges */}

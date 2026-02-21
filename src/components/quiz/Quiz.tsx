@@ -3,7 +3,7 @@ import { quizSteps } from '@/data/quizSteps';
 import { UserData } from '@/types/quiz';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight, Lock, Check } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 
 interface QuizProps {
@@ -15,6 +15,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
   const [userData, setUserData] = useState<UserData>({});
   const [inputValue, setInputValue] = useState("");
   const [sliderValue, setSliderValue] = useState(70);
+  const [multiSelected, setMultiSelected] = useState<string[]>([]);
 
   // Bio step state
   const [bioAge, setBioAge] = useState(35);
@@ -35,6 +36,26 @@ const Quiz = ({ onComplete }: QuizProps) => {
     } else {
       onComplete(updatedData);
     }
+  };
+
+  const handleMultiNext = () => {
+    if (multiSelected.length === 0) return;
+    const value = multiSelected.join(',');
+    const updatedData = { ...userData, [step.fieldName]: value };
+    setUserData(updatedData);
+    setMultiSelected([]);
+
+    if (currentStepIndex < quizSteps.length - 1) {
+      setCurrentStepIndex(prev => prev + 1);
+    } else {
+      onComplete(updatedData);
+    }
+  };
+
+  const toggleMultiOption = (val: string) => {
+    setMultiSelected(prev =>
+      prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val]
+    );
   };
 
   const handleBioNext = () => {
@@ -100,6 +121,47 @@ const Quiz = ({ onComplete }: QuizProps) => {
                 </div>
               </button>
             ))}
+          </div>
+        )}
+
+        {step.type === 'multi-select' && (
+          <div className="space-y-4">
+            {step.options?.map((opt) => {
+              const isSelected = multiSelected.includes(opt.value);
+              return (
+                <button
+                  key={opt.value}
+                  onClick={() => toggleMultiOption(opt.value)}
+                  className={cn(
+                    "w-full bg-card p-5 rounded-2xl flex items-center justify-between",
+                    "transition-colors border-b-4",
+                    isSelected ? "bg-lime-light border-lime" : "border-border hover:bg-lime-light"
+                  )}
+                >
+                  <div className="flex items-center gap-4">
+                    {opt.icon && <span className="text-2xl">{opt.icon}</span>}
+                    <span className="text-foreground font-bold text-lg">{opt.label}</span>
+                  </div>
+                  <div className={cn(
+                    "w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors",
+                    isSelected ? "border-primary bg-primary" : "border-border"
+                  )}>
+                    {isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
+                  </div>
+                </button>
+              );
+            })}
+            <Button
+              disabled={multiSelected.length === 0}
+              onClick={handleMultiNext}
+              className={cn(
+                "w-full py-6 gradient-primary text-primary-foreground font-display font-bold text-xl",
+                "disabled:opacity-50 disabled:cursor-not-allowed",
+                "shadow-button transition-all uppercase tracking-wide mt-6"
+              )}
+            >
+              AVANÇAR
+            </Button>
           </div>
         )}
 

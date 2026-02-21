@@ -1,5 +1,4 @@
 import { UserData } from '@/types/quiz';
-import BMIChart from './BMIChart';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -7,6 +6,48 @@ interface ResultProps {
   userData: UserData;
   onContinue: () => void;
 }
+
+interface HorizontalBarProps {
+  title: string;
+  labels: string[];
+  percent: number;
+  markerLabel: string;
+}
+
+const HorizontalBar = ({ title, labels, percent, markerLabel }: HorizontalBarProps) => (
+  <div className="bg-card rounded-3xl p-6 sm:p-8 shadow-card space-y-4">
+    <p className="text-muted-foreground font-bold text-sm">{title}</p>
+    <div className="space-y-2">
+      <div className="flex justify-between text-[10px] font-bold text-muted-foreground uppercase">
+        {labels.map((l) => (
+          <span key={l}>{l}</span>
+        ))}
+      </div>
+      <div
+        className="relative h-5 rounded-full overflow-hidden"
+        style={{
+          background:
+            'linear-gradient(to right, hsl(0, 84%, 60%), hsl(48, 100%, 55%), hsl(82, 77%, 45%))',
+        }}
+      >
+        <div
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-forest shadow-lg transition-all duration-700"
+          style={{ left: `${percent}%` }}
+        />
+      </div>
+      <div className="relative h-6">
+        <div
+          className="absolute -translate-x-1/2 text-center"
+          style={{ left: `${percent}%` }}
+        >
+          <span className="text-[10px] font-bold text-destructive uppercase whitespace-nowrap">
+            ▲ {markerLabel}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const Result = ({ userData, onContinue }: ResultProps) => {
   const heightInMeters = (userData.height || 165) / 100;
@@ -20,7 +61,10 @@ const Result = ({ userData, onContinue }: ResultProps) => {
     return 'Obesidade';
   };
 
-  // Calculate metabolism percentage based on age and activity level
+  // BMI percent on bar (15-40 range mapped to 0-100%)
+  const bmiPercent = Math.min(Math.max(((bmi - 15) / 25) * 100, 5), 95);
+
+  // Metabolism percentage based on age and activity level
   const getMetabolismPercent = () => {
     const age = Number(userData.age) || 35;
     const activity = userData.activityLevel;
@@ -36,12 +80,35 @@ const Result = ({ userData, onContinue }: ResultProps) => {
 
   const metabolismPercent = getMetabolismPercent();
 
-  const getMetabolismLabel = (pct: number) => {
-    if (pct < 25) return 'MUITO LENTO';
-    if (pct < 40) return 'LENTO';
-    if (pct < 55) return 'MODERADO';
-    if (pct < 70) return 'ATIVO';
-    return 'ACELERADO';
+  // Tendência de Acúmulo Corporal (based on BMI + targetArea)
+  const getAcumuloPercent = () => {
+    let base = 33;
+    if (bmi >= 30) base = 75;
+    else if (bmi >= 25) base = 55;
+    else if (bmi >= 22) base = 40;
+    const targetArea = String(userData.targetArea || '');
+    if (targetArea.includes('full-body')) base += 10;
+    if (targetArea.includes('belly') && targetArea.includes('thighs')) base += 5;
+    return Math.min(Math.max(base, 10), 90);
+  };
+
+  // Índice de Resposta Metabólica (based on bodyType + activity + age)
+  const getRespostaPercent = () => {
+    const age = Number(userData.age) || 35;
+    let base = 50;
+    const bodyType = String(userData.bodyType || '');
+    if (bodyType.includes('easy-gain')) base -= 15;
+    if (bodyType.includes('no-energy')) base -= 10;
+    if (bodyType.includes('plateau')) base -= 12;
+    if (bodyType.includes('fluctuates')) base -= 8;
+    if (bodyType.includes('hunger')) base -= 5;
+    if (age >= 50) base -= 10;
+    else if (age >= 40) base -= 5;
+    const activity = userData.activityLevel;
+    if (activity === 'very-active') base += 20;
+    else if (activity === 'moderate') base += 12;
+    else if (activity === 'light') base += 5;
+    return Math.min(Math.max(base, 8), 92);
   };
 
   const getAgeLabel = () => {
@@ -76,64 +143,36 @@ const Result = ({ userData, onContinue }: ResultProps) => {
         </div>
 
         {/* 1 - Metabolism Bar */}
-        <div className="bg-card rounded-3xl p-6 sm:p-8 shadow-card space-y-4">
-          <p className="text-muted-foreground font-bold text-sm">
-            1 - Seu metabolismo está operando em aproximadamente <span className="text-primary font-bold">{metabolismPercent}%</span> da sua capacidade ideal:
-          </p>
-          
-          <div className="space-y-2">
-            {/* Labels */}
-            <div className="flex justify-between text-[10px] font-bold text-muted-foreground uppercase">
-              <span>Muito Lento</span>
-              <span>Lento</span>
-              <span>Moderado</span>
-              <span>Ativo</span>
-              <span>Acelerado</span>
-            </div>
-            {/* Bar */}
-            <div className="relative h-5 rounded-full overflow-hidden" style={{ background: 'linear-gradient(to right, hsl(0, 84%, 60%), hsl(48, 100%, 55%), hsl(82, 77%, 45%))' }}>
-              {/* Indicator */}
-              <div 
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-forest shadow-lg transition-all duration-700"
-                style={{ left: `${metabolismPercent}%` }}
-              />
-            </div>
-            {/* You are here label */}
-            <div className="relative h-6">
-              <div 
-                className="absolute -translate-x-1/2 text-center"
-                style={{ left: `${metabolismPercent}%` }}
-              >
-                <span className="text-[10px] font-bold text-destructive uppercase whitespace-nowrap">
-                  ▲ VOCÊ ESTÁ AQUI ({metabolismPercent}%)
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HorizontalBar
+          title={`1 - Seu metabolismo está operando em aproximadamente ${metabolismPercent}% da sua capacidade ideal:`}
+          labels={['Muito Lento', 'Lento', 'Moderado', 'Ativo', 'Acelerado']}
+          percent={metabolismPercent}
+          markerLabel={`VOCÊ ESTÁ AQUI (${metabolismPercent}%)`}
+        />
 
         {/* 2 - IMC */}
-        <div className="bg-card rounded-3xl p-6 sm:p-8 shadow-card text-center space-y-4">
-          <p className="text-muted-foreground font-bold text-sm">
-            2 - Seu Índice de Massa Corporal atual:
-          </p>
-          <BMIChart bmi={bmi} />
-          <div className="pt-4 border-t border-border">
-            <p className="text-muted-foreground text-sm">
-              Classificação: <span className="font-bold">{getBMILabel(bmi)}</span>
-            </p>
-          </div>
-        </div>
+        <HorizontalBar
+          title="2 - Seu Índice de Massa Corporal atual:"
+          labels={['Abaixo', 'Normal', 'Sobrepeso', 'Obesidade']}
+          percent={bmiPercent}
+          markerLabel={`IMC ${bmi.toFixed(1)} — ${getBMILabel(bmi)}`}
+        />
 
-        {/* Solution Block */}
-        <div className="bg-primary/15 border-2 border-primary/30 rounded-3xl p-6 text-center space-y-3">
-          <p className="text-primary font-display font-bold text-xl sm:text-2xl">
-            Mas isso tem solução.
-          </p>
-          <p className="text-foreground font-bold text-sm sm:text-base">
-            Agora que você sabe onde está, é hora de destravar.
-          </p>
-        </div>
+        {/* 3 - Tendência de Acúmulo Corporal */}
+        <HorizontalBar
+          title="3 - Tendência de Acúmulo Corporal:"
+          labels={['Baixa', 'Moderada', 'Elevada']}
+          percent={getAcumuloPercent()}
+          markerLabel="VOCÊ ESTÁ AQUI"
+        />
+
+        {/* 4 - Índice de Resposta Metabólica */}
+        <HorizontalBar
+          title="4 - Índice de Resposta Metabólica:"
+          labels={['Lenta', 'Instável', 'Equilibrada', 'Otimizada']}
+          percent={getRespostaPercent()}
+          markerLabel="VOCÊ ESTÁ AQUI"
+        />
 
         <Button
           onClick={onContinue}

@@ -10,25 +10,28 @@ export const quizSteps: QuizStep[] = [
   {
     id: 2,
     question: "Onde você mais acumula gordura?",
-    type: 'select',
+    type: 'multi-select',
     fieldName: 'targetArea',
     options: [
       { label: "Barriga", value: "belly", icon: "🎯" },
       { label: "Coxas/quadril", value: "thighs", icon: "🦵" },
       { label: "Braços", value: "arms", icon: "💪" },
       { label: "Corpo todo", value: "full-body", icon: "🧍" },
+      { label: "Rosto", value: "face", icon: "😊" },
+      { label: "Flancos (laterais da cintura)", value: "flanks", icon: "🔄" },
     ]
   },
   {
     id: 3,
     question: "Qual dessas situações mais parece com você hoje?",
-    type: 'select',
+    type: 'multi-select',
     fieldName: 'bodyType',
     options: [
       { label: "Ganho peso fácil, mesmo comendo pouco", value: "easy-gain", icon: "🍞" },
       { label: "Me sinto sem energia a maior parte do tempo", value: "no-energy", icon: "😴" },
       { label: "Emagreci antes, mas agora não consigo mais", value: "plateau", icon: "📉" },
       { label: "Meu peso oscila constantemente", value: "fluctuates", icon: "⚖️" },
+      { label: "Sinto muita fome fora de hora", value: "hunger", icon: "🎂" },
     ]
   },
   {
